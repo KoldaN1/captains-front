@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-color: var(--tg-theme-bg-color, #fafafa);
+    color: var(--tg-theme-text-color, #000000);
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+:root {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.gameView {
+    overflow-y: auto;
+    height: var(--tg-viewport-stable-height, 100vh);
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+    opacity: 0;
+}

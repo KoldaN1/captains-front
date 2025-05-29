@@ -1,0 +1,517 @@
+{
+  "header_welcome": "Welcome back",
+  "coins": "coins",
+  "per_hour": "per hour",
+  "partners": "Partners",
+  "okx_award": "Awards for $40k",
+  "error": "Something went wrong",
+  "tech_work": "Technical works",
+  "treasure": "Treasure",
+  "treasure_description": "Here we will store all the projects we have raided and captured their tokens.",
+  "total_partners": "Total partners:",
+  "partners_empty": "The list of partners is empty",
+  "claimed_coins": "Claimed {coins} coins!",
+  "earn_more": "Earn more",
+  "earn_more_description": "Complete simple tasks to earn more coins!",
+  "not_completed": "You have not completed the task",
+  "blocked": "Your profile is blocked",
+  "success": "Succesfully",
+  "user_not_found": "User not found",
+  "okx_title": "$20,000 and $20,000 in CBT and Secret prizes from OKX and CAPTAINS BAY",
+  "okx_description": "Complete simple tasks and collect rewards in TON!",
+  "new_users_only": "*For new users only",
+  "visit_registred": "Visit and register",
+  "tasks": "Tasks",
+  "leadboard": "Leadboard",
+  "top": "TOP Leaders",
+  "list_updated": "The list is being updated",
+  "okx_card_1_title": "Prize for sign up!",
+  "okx_card_1_description": "Get your first Secret prize and 500.00k coins with a reward after registration and verification.",
+  "okx_card_2_title": "0.5 TON for the first deposit!",
+  "okx_card_2_description": "Make a deposit of $50 or more to receive another Secret Prize and 5 USDT in futures bonuses.",
+  "okx_card_3_title": "0.5 TON for the first transaction!",
+  "okx_card_3_description": "Make your first trade to get 0.5 TON bonuses.",
+  "okx_card_4_title": "10 TON for even more deals!",
+  "okx_card_4_description": "Trade to achieve even more trading volumes and get up to 10 TON.",
+  "rewards": "Rewards",
+  "okx_balance": "to the OKX balance",
+  "check": "Check",
+  "task_completed": "Task completed",
+  "click_to_start": "Click to start",
+  "save": "Save",
+  "change_ship": "Change the active ship?",
+  "not_coins": "Not enough coins",
+  "market_title": "Ship market",
+  "market_description": "Purchase ships, upgrade them, hire sailors, and earn passive income.",
+  "level": "Level",
+  "income": "Income per hour:",
+  "max_crew": "Maximum Crew Members:",
+  "buy": "Buy",
+  "max_level": "The maximum level",
+  "upgraded": "Upgraded:",
+  "upgrade": "Upgrade",
+  "crew_members": "Board and arsenal",
+  "max": "Max",
+  "comming_soon": "Coming soon!",
+  "leadboard_description": "Leagues are formed depending on the number of ships purchased, and the place in the league is determined by your income per hour and the player's balance.",
+  "your_profile": "Your profile",
+  "your_next": "Your next:",
+  "connect_wallet_answer": "Are you sure you want to remove the connected wallet?",
+  "inventory_title": "Web3 Inventory",
+  "inventory_description": "Securely store and manage your game's unique NFT items.",
+  "connected": "Connected:",
+  "get_free_ship": "Get ship free",
+  "mining_progress": "Mining in progress",
+  "ready_claim": "Ready to claim",
+  "claim_coins": "Claim {coins} coins",
+  "start_mining": "Start mining",
+  "frens_title": "Invite frens",
+  "frens_description": "My board",
+  "frens_how_its_work": "How it's work?",
+  "total": "Total",
+  "raid_date": "Raid date:",
+  "raid_description": "The coins displayed are from our partner, allocated specifically to our project. These coins contribute to the capitalization of CaptainsBay, our project.",
+  "cb_tasks": "Captains Bay Tasks",
+  "ambassadors": "Ambassadors",
+  "start": "Start",
+  "share_title": "Join and get a bonus in the new Social Finance Game a Captains Bay!",
+  "invite": "Invite a fren",
+  "market": "Market",
+  "home": "Home",
+  "frens": "Frens",
+  "web3": "Web3",
+  "get_first_ship": "Get your first Pirat Ship",
+  "get_free": "Get free!",
+  "days_streak": "days streak",
+  "frens_earned": "Your frens have earned",
+  "claim": "Claim",
+  "coins_for_you": "coins for you!",
+  "x2_title": "Complete Tasks & Get Boost your time!",
+  "hour": "hour",
+  "skip": "Skip",
+  "mining_ends": "Mining ends in {time}",
+  "sailing": "Sailing",
+  "watch": "Watch",
+  "x2_ads": "Watch just 1 ad video and get a temporary boost to your passive earnings!",
+  "min": "min",
+  "from": "from",
+  "current_league": "League",
+  "d": "d",
+  "h": "h",
+  "m": "m",
+  "s": "s",
+  "step_title_1": "Invite Users",
+  "step_description_1": "Share your invitation link with others.",
+  "step_title_2": "Get Coins for Invites",
+  "step_description_2": "Earn 100,000 coins for each regular user you invite.",
+  "step_title_3": "Get More for Premium Invites",
+  "step_description_3": "Earn 250,000 coins for each Telegram Premium user you invite.",
+  "step_title_4": "Earn from Invites",
+  "step_description_4": "Earn an additional 8% of the earnings of each user you invite.",
+  "step_title_5": "Earn from Their Invites",
+  "step_description_5": "Earn 2% of the earnings from users invited by your referrals.",
+  "ad_restore": "New ad in",
+  "in_hour": "per hour",
+  "about_us": "About",
+  "about_description": "Learn more about Captains Bay",
+  "about_description_1": "Captains Bay is an innovative platform that combines exciting game elements with innovative cryptocurrency capabilities. At the intersection of SocialFi and DeFi, Captains Bay allows users to embark on exciting 'raids' to capture tokens from various partner projects.",
+  "about_description_2": "The captured tokens are stored in our treasury and tokenized, creating a reliable index token that reflects the value of all collected assets.",
+  "roadmap": "Roadmap",
+  "launch_date": "Launch date:",
+  "users": "Users:",
+  "t_apps": "Recognized by:",
+  "join_community": "Join the community",
+  "roadmap_description": "Our development plan for the near future",
+  "q2_2024": "Q2 2024 (April–June)",
+  "q2_2024_0": "Adding new features",
+  "q2_2024_1": "Introduction of passive income",
+  "q2_2024_2": "First collaborations",
+  "q2_2024_3": "Treasure chest filling",
+
+  "q3_2024": "Q3 2024 (July–September)",
+  "q3_2024_0": "Web3 integration",
+  "q3_2024_1": "Adding game NFTs",
+  "q3_2024_2": "Adding on-chain tasks with tracking",
+
+  "q4_2024": "Q4 2024 (October–December)",
+  "q4_2024_0": "Platform improvement for on-chain tasks",
+  "q4_2024_1": "Adding game events and farming of partner tokens",
+  "q4_2024_2": "Preparation for launch of Captains Bay token farming",
+
+  "q1_2025": "Q1 2025 (January–March)",
+  "q1_2025_0": "User activity verification",
+  "q1_2025_1": "Testing mechanics for second token farming season",
+  "q1_2025_2": "Development and testing of treasure chest smart contract",
+  "q1_2025_3": "Pilot testing of token distribution",
+
+  "q2_q3_2025": "Q2–Q3 2025 (April–September)",
+  "q2_q3_2025_0": "Full launch of Captains Bay token farming",
+  "q2_q3_2025_1": "Opening access to purchase missing ships",
+  "q2_q3_2025_2": "Filling treasure chest with partner assets",
+  "q2_q3_2025_3": "Conducting farm participant snapshot",
+
+  "q4_2025": "Q4 2025 (October–December)",
+  "q4_2025_0": "Token distribution to farm participants",
+  "q4_2025_1": "Token listing on DEX and CEX",
+  "q4_2025_2": "Creating liquidity pairs using the token",
+
+  "q1_q2_2026": "Q1–Q2 2026 (January–June)",
+  "q1_q2_2026_0": "Platform scaling",
+  "q1_q2_2026_1": "Transition to multi-chain interaction",
+  "q1_q2_2026_2": "Growth and engagement of social asset",
+  "q1_q2_2026_3": "Increasing treasure chest filling with partner assets",
+  "q1_q2_2026_4": "Full transition to on-chain interaction using Captains Bay token",
+
+  "q3_q4_2026": "Q3–Q4 2026 (July–December)",
+  "q3_q4_2026_0": "Formation of decentralized community of traders and market makers",
+  "q3_q4_2026_1": "Growth of portfolio assets value through on-chain integrations with partners' products and tokens",
+  "faq_title": "Frequently Asked Questions",
+  "more_info": "For more detailed information, visit our official website:",
+  "visit_website": "Go to the official website",
+  "what_is_captains_bay": "What is Captains Bay?",
+  "why_play_captains_bay": "Why should I play Captains Bay?",
+  "what_are_raids": "What are raids?",
+  "what_is_treasury": "What is the treasury?",
+  "how_to_earn": "How can I earn by playing Captains Bay?",
+  "why_invite_friends": "Why is it important to invite friends?",
+  "why_buy_nft": "Why should I acquire NFTs?",
+  "when_token_listing": "When will the token be listed?",
+  "what_is_captains_bay_answer": "Captains Bay is an innovative platform that combines game elements with cryptocurrency capabilities. It allows users to participate in 'raids' to obtain tokens from various partner projects.",
+  "why_play_captains_bay_answer": "By playing Captains Bay, you can earn cryptocurrency by participating in exciting raids, develop your skills in the crypto sphere, and become part of a growing community.",
+  "what_are_raids_answer": "Raids are a key element of gameplay in Captains Bay. These are tasks that, when completed, allow players to receive tokens from various partner projects.",
+  "what_is_treasury_answer": "The treasury is a common pool of tokens collected during raids. These tokens are used to create an index token that reflects the value of all collected assets.",
+  "how_to_earn_answer": "In Captains Bay, you can earn by participating in raids, completing tasks, inviting friends, and actively participating in community life.",
+  "why_invite_friends_answer": "By inviting friends, you expand the Captains Bay community, which leads to an increase in the platform's value. Additionally, you can receive extra bonuses for invitations.",
+  "why_buy_nft_answer": "NFTs in Captains Bay provide additional benefits, such as increased rewards for raids, exclusive access to certain features, and the ability to participate in platform governance.",
+  "when_token_listing_answer": "The token listing is planned for Q4 2024, according to our roadmap. The exact date will be announced closer to that time.",
+  "new_user_welcome": "Welcome to Captains Bay!",
+  "learn_more": "Learn more about the project",
+  "treasure_chest": "NFT collection",
+  "nft_character_drop": "From Captains Bay",
+  "start_sale": "Start of sales:",
+  "connect_wallet": "Connect wallet",
+  "search": "Search...",
+  "free": "Free",
+  "selected": "Selected",
+  "dismiss": "Dismiss",
+  "select": "Select",
+  "max_crew_reached": "Maximum number of selected friends for this ship - {limit}",
+  "remove_fren": "Remove a fren?",
+  "change": "Change",
+  "read_more": "Read more",
+  "income_per_hour": "Income per hour:",
+  "limit_life": "Maximum level reached",
+  "las_upgrade": "After upgrade:",
+  "crew_bonus": "Crew bonus:",
+  "select_fren_incoming_up": "The selected player increases the ship's income by",
+  "located": "Located on:",
+  "booster_coins": "Increases ship's income by { coins }",
+  "booster_mining_time": "Adds { mining_time } min to mining duration",
+  "booster_time_reduction": "Speeds up upgrades by { time_reduction }",
+  "this_card": "This card:",
+  "rare_1": "A simple but reliable choice for stable growth.",
+  "rare_2": "Optimal choice for advanced captains.",
+  "rare_3": "A powerful artifact for maximum efficiency and dominance at sea!",
+  "nft_comming_soon": "Your NFTs are already with you, and soon they will be sent to your wallet!",
+  "mint": "Already sending",
+  "please_connect_wallet": "To receive NFT, you need to connect your wallet",
+  "sold_out": "Sorry, all NFTs are sold out",
+  "empty": "Remaining: { count }",
+  "box_title": "Open the chest and get your first NFT!",
+  "open_price": "Open for { amount } Stars",
+  "max_crews": "No available slots",
+  "rare_fren": "Just invited, and he's already helping to increase income! A true crew member!",
+  "send_to_wallet_in": "Sending to wallet in ",
+  "time": "Time",
+  "ship_not_purchased": "Ship not purchased",
+  "ship_can_add_nft": "You can add {nftCount} more NFTs to the ship {shipName}",
+  "ship_can_add_fren": "You can add {nftCount} more FRENs to the ship {shipName}",
+  "ship_full": "The ship {shipName} is fully equipped",
+  "max_fren_crews": "Maximum number of FREN in the crew has been reached",
+  "booster_activated": "The crew worked wonders! Upgrade time significantly reduced",
+  "open_gg": "Open in GetGems",
+  "back": "Back to home",
+  "event_title": "Pirate Cruise",
+  "event_description": "Participate in the cruise and earn partner coins and Captains Bay coins with a bonus of up to 4x!",
+  "event_instruction_title": "Event Participation Instructions",
+  "event_instruction_1": "After purchasing tickets, send your ship on a voyage every 8 hours.",
+  "event_instruction_2": "After each voyage, open the app and claim the accumulated coins.",
+  "event_instruction_3": "At the end of the event, all collected coins will be automatically credited to the partner’s app. Simply open the app, and the coins will appear in your account.",
+  "event_instruction_4": "By following these steps, you can make the most of the event and receive all rewards!",
+  "event_ship": "Liner",
+  "event_leaderboard": "Leaderboard",
+  "tickets": "Tickets",
+  "event_booster": "Booster",
+  "get_ticket": "Buy tickets",
+  "event_mine": "Mine",
+  "event_end_date": "Event end date:",
+  "cruise": "Enter the Pirate Cruise",
+  "cruise_attention": "To participate in the Pirate Cruise, you need to purchase a ticket or NFT",
+  "buy_nft": "Buy NFT on GetGems",
+  "nft_from_event": "NFTs from Captains Bay provide unlimited tickets for participation in cruises",
+  "nft_tickets": "You already have an NFT that gives {tips} tickets. Click to participate",
+  "multiple_captains_bay_per_hour": "{multiple} Captains Bay coins per hour",
+  "partner_hourly": "+{tokens} {partner} tokens per hour",
+  "tip": "Ticket",
+  "tips_a": "Tickets",
+  "events": "Events",
+  "claim_your_coins": "Claim your coins",
+  "farm_title": "TOKEN FARM EVENT",
+  "click_to_prereg": "Click to Pre-registration",
+  "what_farm_title": "WHAT IS TOKEN FARM EVENT (TFE)",
+  "what_farm_desctiption": "Ahoy, me hearties! TFE is the opportunity to farm new projects' tokens before they go to market. Instead of waiting for token sales, you actively earn them through exciting farming sessions. This means ye'll be among the first to receive them, and ye always have the chance to earn more than the cost of yer ticket.",
+  "farm_answer": "Does this sound like a real treasure hunt!",
+  "what_farm_work_title": "HOW DOES TFE WORK",
+  "1st_farm_work_title": "1. EVENT BROADCAST",
+  "2st_farm_work_title": "2. TICKET PURCHASE",
+  "3st_farm_work_title": "3. TOKEN FARMING",
+  "4st_farm_work_title": "4. CLAIM TOKENS",
+  "1st_farm_work_description": "The grand event is announced on Captains Bay, with a countdown timer and a reminder to set yer sails in time",
+  "2st_farm_work_description": "Buy yer ticket ($x, $x2, or $x3) to unlock different levels of boost for yer farming exploits",
+  "3st_farm_work_description": "Every 4 hours, ye'll farm tokens with a simple click, collecting yer booty after each cycle",
+  "4st_farm_work_description": "At the end of the event, sail back to the project's platform to claim yer tokens, where theyll be waiting for ye",
+  "learn_farm_more": "Learn more about TFE",
+  "download_p": "Download the presentation",
+  "pre_reg_form_title": "Pre-registration form",
+  "full_name": "Your full name",
+  "your_project": "What kind of project do you represent",
+  "your_tg_link": "Your telegram link",
+  "join_farmpad": "Send a request",
+  "order_sended": "The application has been sent",
+  "your_cost": "The amount of tokens in USDT for distribution in TFE",
+  "enter_partner_nfts": "Join in using NFT from",
+  "tfe_title": "Are you a representative of the project at the fundraising or tokensale stage?",
+  "tfe_description": "FarmPad is the ideal platform for hosting TFE sessions!",
+  "special_offer": "Special Offer",
+  "special_offer_description": "Join the event now and instantly claim a guaranteed 50% of missed tokens! After that, continue farming with the advantage of 3 tickets on your account to maximize your earnings.",
+  "tfe_advantages_title": "TOP 5 PIRATE PERKS FOR USERS",
+  "tfe_advantages_1_title": "DON'T BUY - FARM",
+  "tfe_advantages_1_description": "Leave traditional token purchases behind! Dive into farming where you earn through participation. It's your chance to collect more tokens through action",
+  "tfe_advantages_2_title": "TREASURE BEYOND TICKETS",
+  "tfe_advantages_2_description": "There's a real opportunity to earn far more than the cost of the ticket. Each farming session might bring more treasure than you expected, if luck's on ye side",
+  "tfe_advantages_3_title": "EARLY BIRD TOKENS",
+  "tfe_advantages_3_description": "Be the first to access the tokens of top projects before they hit the market, giving ye a strategic eage over other pirates",
+  "tfe_advantages_4_title": "DOUBLE-KILL FARMING",
+  "tfe_advantages_4_description": "As ye farm tokens from projects, ye also accumulate additional Captains Bay tokens, boosting yer bounty even further",
+  "tfe_advantages_5_title": "PART OF THE SIGNAL CREW",
+  "tfe_advantages_5_description": "Sail with the Captains Bay signal crew — a fleet of active adventurers all huntin' for riches in the crypto seas. Together, ye'll be part of a thriving, ever-growing community",
+  "tfe_sub_title": "SET SAIL FOR GLORY!",
+  "tfe_sub_description": "The winds be at yer back, and Captains Bay awaits. Join this legendary treasure hunt, take command of yer token farming, and claim yer rightful bounty. Sign on, raise yer anchor, and set sail to capture yer share of crypto riches!",
+  "onboarding_title_1": "Ahoy, <span class='text-pantone_color'>captains</span>!",
+  "onboarding_description_1": "Captain’s Bay blends <b>SocialFi</b> & <b>DeFi</b>, offering an engaging adventure where <b>strategic ship upgrades</b> lead to riches.",
+  "onboarding_sub_description_1": "Raise your grog, mates! Adventure and gold await!",
+  "onboarding_title_2": "<span class='text-pantone_color'>Upgrade</span> Your Fleet",
+  "onboarding_description_2": "Advance your ship to <b>level 10</b> to unlock the next one. Each new vessel boosts your <b>passive income</b> and <b>opens up more earning opportunities</b>.",
+  "onboarding_sub_description_2": "Your fleet is your path to fortune.",
+  "onboarding_title_3": "Gather Your <span class='text-pantone_color'>Crew</span>",
+  "onboarding_description_3": "Invite friends and build your team. A larger crew <b>increases your farming capabilities</b> and leaderboard standings, paving the way to bigger rewards!",
+  "onboarding_sub_description_3": "Let’s carve our names into legend!",
+  "onboarding_title_4": "<span class='text-pantone_color'>NFT</span> Holder Perks",
+  "onboarding_description_4": "Our collection includes <b>3 NFT levels</b>, each offering unique <b>farming boosters</b> and <b>free access to the Event Ship</b>.",
+  "onboarding_sub_description_4": "The higher the NFT level, the greater the benefits and earning potential.",
+  "onboarding_title_5": "Sail on the <span class='text-pantone_color'>Event Ship</span>",
+  "onboarding_description_5": "Join the Event Ship for a chance to <b>farm partner assets</b> and <b>Captains Bay tokens</b>, doubling your rewards. NFT holders join for free, while others can buy entry.",
+  "onboarding_sub_description_5": "Time to claim your treasures!",
+  "onboarding_title_6": "Set for <span class='text-pantone_color'>FarmPAD</span>",
+  "onboarding_description_6": "Participate in <b>FarmPAD</b> to farm project tokens before their market release <b>at presale prices</b>. Add the event to your calendar and log in every 4 hours for farming.",
+  "onboarding_sub_description_6": "More activity means more tokens!",
+  "onboarding_title_7": "New <span class='text-pantone_color'>Adventures</span> Await",
+  "onboarding_description_7": "Get ready for new features: the upcoming <b>TGE</b> and a massive <b>token drop</b>. Stay tuned — Captains Bay is gearing up for a <b>new season of thrilling adventures!</b>",
+  "onboarding_sub_description_7": "Crew, the horizon be ours!",
+
+  "farmpad_cta_header": "THE <span class='farmpad-cta_header-gold'>GOLD</span> IS NEAR!",
+  "farmpad_cta_text": "<span style='font-weight: 600'>Discover gems from Telegram Gaming Accelerator</span>, soon on FarmPAD with <span style='font-weight: 600'>Helika</span>!",
+  "farmpad_cta_link": "Set the course to FarmPAD",
+  "farpad_event_title": "FarmPad Event",
+  "farpad_event_description": "FarmPad Event\nJoin the adventure and farm exclusive project assets! Participate in the cruise to collect partner tokens and in-game rewards with up to a 4x bonus!",
+
+  "ev_list_1_heading": "EVENTS:",
+  "ev_list_1_caption": "Farming Events",
+  "ev_list_2_heading": "MY EVENTS",
+  "ev_list_2_caption": "Your Farming Events",
+  "ev_list_3_heading": "EVENTS IN PROGRESS:",
+  "ev_list_3_caption": "Join Farming Events with:",
+  "ev_list_4_heading": "UPCOMING EVENTS:",
+  "ev_list_4_caption": "Get ready for NEW Farming adventures with:",
+  "ev_list_5_heading": "FINISHED EVENTS:",
+  "ev_list_5_caption": "Tokens farmed for the projects",
+  "ev_list_join": "Join",
+  "ev_list_ev_ended": "Ended",
+
+  "setTimer": "set timer",
+  "farming": "farming",
+  "getTicket": "Get ticket",
+  "autoFarm": "Autofarm",
+  "getBoosters": "Get Boosters",
+
+  "participationTutorial": {
+    "title": "Participation Tutorial",
+    "learnMore": "Learn more about Captains Bay",
+    "info": {
+      "farmPad": "FarmPAD allows you to farm tokens of upcoming projects before they hit the market. By participating in themed events and farming cycles, you can earn partner tokens, in-game currencies, and exclusive rewards. Boost your farming potential by getting tickets & seizing this thrilling event.",
+      "airDrop": "Participate in our exclusive Airdrop campaigns by leveling up your ships, earning tickets, and farming Captains Bay tokens. With each farming cycle, collect rewards that boost your loot and contribute to your treasure trove."
+    },
+    "steps": {
+      "title": "How to Participate in the Captains Bay",
+      "farmPad": {
+        "step1": {
+          "title": "STEP 1: Secure Your Tickets",
+          "text": "In Partner Events, tickets are essential to unlocking farming potential. The more tickets you have, the more tokens you can farm per hour. You can acquire up to 3 tickets:",
+          "listItems": {
+            "step1": "<b>1 Ticket:</b> Grants you the basic farming rate.",
+            "step2": "<b>2 Tickets:</b> Allows you to farm 2x the tokens.",
+            "step3": "<b>3 Tickets:</b> Unlocks the maximum boost, letting you farm 3x the tokens."
+          }
+        },
+        "step2": {
+          "title": "STEP 2: Join the Event",
+          "listItems": {
+            "step1": "Access the Partner Farming Event via the FarmPAD interface.",
+            "step2": "Select the number of tickets you want to obtain to determine your farming rate."
+          }
+        },
+        "step3": {
+          "title": "STEP 3: Join the Event",
+          "listItems": {
+            "step1": "Farming sessions run in 8-hour cycles. Once the cycle is complete:"
+          },
+          "innerList": {
+            "step1": "Claim your tokens before starting the next farming cycle.",
+            "step2": "Keep farming continuously to maximize your rewards."
+          }
+        },
+        "step4": {
+          "title": "Step 4: Redeem Your Tokens",
+          "listItems": {
+            "step1": "At the end of the event, your farmed tokens will be available for redemption through the partner's platform or wallet, based on the event's rules."
+          }
+        }
+      },
+      "airDrop": {
+        "step1": {
+          "title": "Step 1: Upgrade Your Ships",
+          "listItems": {
+            "step1": "Upgrade your ships in the game to Level 10 using in-game currency or Telegram's Stars.",
+            "step2": "Upgraded ships enhance your farming capabilities and unlock access to tickets required for the airdrop event."
+          }
+        },
+        "step2": {
+          "title": "Step 2: Earn Airdrop Tickets",
+          "text": "Tickets grant access to farming Captains Bay tokens during the Airdrop event, with different bonuses based on the number of tickets. \nHere’s how to earn them: <br><br><b>Ticket Requirements:</b>",
+          "text2": "<b>Ticket Bonuses:</b>",
+          "listItems": {
+            "step1": "<b>1 Ticket:</b> Fully upgrade 9 ships.",
+            "step2": "<b>2 Tickets:</b> Fully upgrade 9 ships and own at least 1 Captains Bay NFT.",
+            "step3": "<b>3 Tickets:</b> Fully upgrade 9 ships, own at least 1 NFT, and rank in the Top 100 Leaderboard."
+          },
+          "listItems2": {
+            "step1": "<b>2 Tickets ($15):</b> Grants the ability to farm 2x more tokens during the event.",
+            "step2": "<b>3 Tickets ($30):</b>  Grants the ability to farm 3x more tokens during the event."
+          }
+        },
+        "step3": {
+          "title": "Step 3: Start Farming",
+          "listItems": {
+            "step1": "Join the farming event through the FarmPAD interface.",
+            "step2": "Begin farming Captains Bay tokens by launching 4-hour farming cycles.",
+            "step3": "Claim your farmed tokens after each cycle to maximize your rewards."
+          }
+        },
+        "step4": {
+          "title": "Step 4: Redeem Your Tokens",
+          "listItems": {
+            "step1": "After the event concludes, your farmed Captains Bay tokens will be available for redemption.",
+            "step2": "Utilize these tokens for:"
+          },
+          "innerList": {
+            "step1": "In-game purchases.",
+            "step2": "Upgrades or trading.",
+            "step3": "Supporting further gameplay features post-TGE."
+          }
+        }
+      }
+    },
+    "tips": {
+      "title": "Important Tips",
+      "farmPad": {
+        "tip1": {
+          "title": "Maximize Farming",
+          "text": "Opt for 2 or 3 tickets for higher farming efficiency."
+        },
+        "tip2": {
+          "title": "Stay Active",
+          "text": "Regularly claim your rewards to ensure you don’t miss any farming cycles."
+        },
+        "tip3": {
+          "title": "Plan Ahead",
+          "text": "Use boosts strategically to amplify your farming rewards."
+        }
+      },
+      "airDrop": {
+        "tip1": {
+          "title": "Stay Active",
+          "text": "Ensure you collect your rewards after each cycle to avoid missing any tokens."
+        },
+        "tip2": {
+          "title": "Strategize Early",
+          "text": "Decide whether to grind for tickets or invest in upgrades and NFTs for higher rewards."
+        },
+        "tip3": {
+          "title": "Optimize Gains",
+          "text": "Consider using a booster to maximize your farming efficiency."
+        }
+      }
+    },
+    "strategies": {
+      "title": "Strategies for Maximizing Your Airdrop Rewards",
+      "item1": {
+        "title": "Farm to Earn Tickets",
+        "text": "Progressively upgrade ships through gameplay to secure your first ticket."
+      },
+      "item2": {
+        "title": "Upgrade Ships",
+        "text": "Purchase ships to earn at least one ticket faster. Use boosters to complete your set."
+      },
+      "item3": {
+        "title": "Leverage NFTs",
+        "text": "Acquire one of the 300 NFTs available on the secondary market to secure 2 tickets."
+      },
+      "item4": {
+        "title": "Leaderboard Advantage",
+        "text": "Combine upgraded ships, NFTs, and crew members to break into the Top 100 Leaderboard\nand secure 3 tickets."
+      }
+    }
+  },
+  "boosters": {
+    "title": "Boosters",
+    "compensation": {
+      "title": "Compensation",
+      "text": "Get the Compensation Booster to re-gain the tokens that you could farm if you started the Farming event on time!"
+    },
+    "x2": {
+      "title": "Farming x2",
+      "text": "Get the x2 Booster to maximize tokens that you can farm during the event. Your tokens will double."
+    },
+    "autofarm": {
+      "title": "AutoFARM for 24h",
+      "text": "Get the AutoFARM Booster to automatically perform farming with no need to push the button manually."
+    },
+    "TON": {
+      "title": "Transaction",
+      "description": "Make a transaction in TON to receive a booster!"
+    },
+    "XTR": {
+      "title": "Telegram Stars",
+      "description": "Pay for the booster using Telegram Stars!"
+    }
+  },
+  "alreadyBought": "Already Bought",
+  "successTransaction": "Successful Transaction! Please wait for the transaction confirmation on the server. Within 5 minutes, you will receive the item.",
+  "notAvailable": "Not Available",
+  "needWallet": "For payment, you need to bind a wallet!",
+  "anyTicket": "Any Amount",
+  "oneTicket": "One Ticket",
+  "twoTickets": "Two Tickets",
+  "threeTickets": "Three Tickets",
+  "nftEntry": "NFT entry to this event is not available"
+}
