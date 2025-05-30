@@ -15,10 +15,12 @@ export default {
         bg_plain: "#FEB72D",
         bg_scarce: "#F87C56",
         bg_epic: "#51CFF6",
+        bg_yellow: "#EAB308",
       },
       backgroundImage: {
         "death-pattern": "url('./src/assets/death_bg.svg')",
         "onboarding-pattern": "url('./src/assets/kraken.svg')",
+        "complete-task-bg": "url('./src/assets/complete_task_bg.svg')",
       },
     },
   },
