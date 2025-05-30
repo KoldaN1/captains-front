@@ -79,7 +79,7 @@ const copy = () => {
 </script>
 
 <template>
-  <div class="fixed bottom-0 left-0 right-0 pb-6 pt-4 px-4 bg-bg_color">
+  <div class="fixed bottom-0 left-0 right-0 pb-6 pt-4 px-4 bg-bg_color z-0">
     <div v-if="page === 'HOME' && buttonText" class="pb-4 flex gap-x-2">
       <button
         :disabled="mining_status === 'Mining in progress' || buttonActivity"
