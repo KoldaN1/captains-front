@@ -171,7 +171,7 @@ onMounted(async () => {
     changeLanguage("ru");
   }
 
-  webapp.ready();
+  webapp.ready?.();
 
   let session_token = sessionStorage.getItem("jwt_token");
 
