@@ -1,6 +1,9 @@
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import Item from './Item.vue'
+import QuestsItem from './QuestsItem.vue'
+import EventMenu from '../Modals/EventMenu.vue'
+import TasksContainer from './TasksContainer.vue'
 import { Icon } from '@iconify/vue'
 import axiosInstance from '../../utils/axiosInstance'
 import { useGameStore } from '../../stores/gameStore'
@@ -10,8 +13,8 @@ const gameStore = useGameStore()
 const emit = defineEmits(['complete', 'check_error'])
 
 const loading = ref(true)
-const tasks = ref({ OurProjects: [], PartnerProjects: [], InfluencerProjects: [] })
-
+const tasks = ref({ OurProjects: [], PartnerProjects: [], InfluencerProjects: [], Quests: [] })
+const openQuests = ref(false)
 const displayedPartnerProjects = ref([])
 const displayedInfluencerProjects = ref([])
 
@@ -24,7 +27,7 @@ const getTasksData = async () => {
         await gameStore.getTasks()
     }
 
-    tasks.value = gameStore.tasks || { OurProjects: [], PartnerProjects: [], InfluencerProjects: [] }
+    tasks.value = gameStore.tasks || { OurProjects: [], PartnerProjects: [], InfluencerProjects: [], Quests: [] }
 
     if (tasks.value.OurProjects?.length > 0) {
         tasks.value.OurProjects.sort((a, b) => a.id - b.id)
@@ -34,6 +37,15 @@ const getTasksData = async () => {
     }
     if (tasks.value.InfluencerProjects?.length > 0) {
         tasks.value.InfluencerProjects.sort((a, b) => b.id - a.id)
+    }
+    if (!tasks.value.Quests?.length) {
+        tasks.value.Quests = [{
+            id: 1,
+            title: 'Duck Task',
+            description: 'This is a sample duck task.',
+            is_completed: false,
+            reward: 190000
+        }]
     }
 
     displayedPartnerProjects.value = tasks.value.PartnerProjects?.slice(0, 5) || []
@@ -58,6 +70,8 @@ const completeTask = async (task, category) => {
         if (taskIndex !== -1 && taskIndex !== undefined) {
             tasks.value.OurProjects[taskIndex].is_completed = true
         }
+    } else if (category === 'Quests') {
+        tasks.value.Quests[0].is_completed = true
     }
     emit('complete', task)
 }
@@ -89,6 +103,9 @@ watch(displayedInfluencerProjects, (newVal) => {
 <template>
     <transition name="fade" mode="out-in">
         <div v-if="!loading" class="flex flex-col gap-y-4">
+            <div v-if="tasks.Quests?.length > 0" class="flex flex-col gap-y-2">
+                <QuestsItem @click="openQuests = true" :task="tasks.Quests[0]" />
+            </div>
             <div v-if="tasks.OurProjects?.length > 0" class="flex flex-col gap-y-2">
                 <div class="font-semibold flex items-center gap-x-1">
                     <Icon icon="mdi:success-bold" />
@@ -115,6 +132,17 @@ watch(displayedInfluencerProjects, (newVal) => {
                 <Item v-for="task in displayedInfluencerProjects" :key="task.id" :task="task"
                     @complete="completeTask(task, 'InfluencerProjects')" @check_error="emit('check_error')" />
             </div>
+            <EventMenu :isOpen="openQuests" @close="openQuests = false">
+                <main class="flex flex-col gap-y-6 overflow-y-auto h-full rounded-b-2xl">
+                    <img
+                        src="../../assets/ducky&gram.png"
+                        alt="Ducky & Gram"
+                        class="w-full"
+                    />
+
+                    <TasksContainer @complete="completeTask" @close-modal="openQuests = false" @check_error="() => emit('check_error')" />
+                </main>
+            </EventMenu>
         </div>
 
         <div v-else class="flex flex-col gap-y-2 animate-pulse">

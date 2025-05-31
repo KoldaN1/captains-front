@@ -513,5 +513,12 @@
   "oneTicket": "One Ticket",
   "twoTickets": "Two Tickets",
   "threeTickets": "Three Tickets",
-  "nftEntry": "NFT entry to this event is not available"
+  "nftEntry": "NFT entry to this event is not available",
+  "ducky_gram": {
+    "title": "Duckygram",
+    "description": "Dive into Duckygram, collect ducks and win extra reward!",
+    "reward": "Reward",
+    "complete-btn": "COMPLETE QUEST"
+  },
+  "quests": "Quests"
 }

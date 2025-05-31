@@ -1,6 +1,6 @@
 <script setup>
 
-import { ref, getCurrentInstance } from 'vue'
+import { ref, getCurrentInstance, computed } from 'vue'
 
 import Heading from '../../components/Other/Heading.vue'
 
@@ -13,6 +13,7 @@ import formatNumber from '../../utils/formatNumber'
 import generateId from '../../utils/generateId'
 import axiosInstance from '../../utils/axiosInstance'
 import Navigator from '../../components/Navigator/Navigator.vue'
+import { useTgTheme } from "../../composables/tg_theme.js";
 
 const { proxy } = getCurrentInstance()
 
@@ -47,11 +48,18 @@ const removeAlert = (id) => {
   alerts.value = alerts.value.filter(alert => alert.id !== id)
 }
 
+const background = computed(() => {
+  return useTgTheme() === "light" ? "bg-white" : "bg-black";
+});
+
+const textColor = computed(() => {
+  return useTgTheme() === "light" ? "text-black" : "text-white";
+});
 </script>
 
 <template>
   <transition name="fade">
-    <main class="flex flex-col gap-y-6 px-4 pt-6 pb-[102px]">
+    <main class="flex flex-col gap-y-6 px-4 pt-6 pb-[102px]" :class="background, textColor">
 
       <transition name="fade">
         <div v-if="alerts.length > 0" v-auto-animate class="fixed z-20 top-4 left-4 right-4 flex flex-col gap-y-1.5">
