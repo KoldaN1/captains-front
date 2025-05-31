@@ -1,9 +1,10 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 
-import { ref, watch, getCurrentInstance } from "vue";
+import { ref, watch, getCurrentInstance, computed } from "vue";
 import formatNumber from "../../utils/formatNumber";
 import clipboard from "../../utils/copy";
+import { useTgTheme } from "../../composables/tg_theme.js";
 
 const { proxy } = getCurrentInstance();
 
@@ -76,10 +77,18 @@ const copy = () => {
     copied.value = false;
   }, 2000);
 };
+
+const background = computed(() => {
+  return useTgTheme() === "light" ? "bg-white" : "bg-black";
+});
+
+const textColor = computed(() => {
+  return useTgTheme() === "light" ? "text-black" : "text-white";
+});
 </script>
 
 <template>
-  <div class="fixed bottom-0 left-0 right-0 pb-6 pt-4 px-4 bg-bg_color">
+  <div class="fixed bottom-0 left-0 right-0 pb-6 pt-4 px-4" :class="[background, textColor]">
     <div v-if="page === 'HOME' && buttonText" class="pb-4 flex gap-x-2">
       <button
         :disabled="mining_status === 'Mining in progress' || buttonActivity"

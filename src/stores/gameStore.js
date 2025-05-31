@@ -11,6 +11,7 @@ export const useGameStore = defineStore("gameStore", () => {
   const events = ref(null);
 
   const tasks = ref(null);
+  const additionalTasks = ref(null);
 
   const getAttentions = async () => {
     let { data: attentions_data } = await axiosInstance.get("/rest/v1/attentions", {
@@ -54,6 +55,49 @@ export const useGameStore = defineStore("gameStore", () => {
     }
   };
 
+  const getAdditionalTasks = async () => {
+    // TODO: Uncomment the following lines to fetch additional tasks from the API
+    // let { data, error } = await axiosInstance.post("/rest/v1/rpc/v2_get_additional_tasks");
+    // if (data) {
+      additionalTasks.value = [
+        {
+          api: null,
+          category: "Our Projects",
+          channel_id: "@CaptainsBay_Chat",
+          id: 12,
+          is_completed: false,
+          link: "https://google.com",
+          reward: 500000,
+          status: "active",
+          title: "Breed a duck",
+        },
+        {
+          api: null,
+          category: "Our Projects",
+          channel_id: "@CaptainsBay_Chat",
+          id: 18,
+          is_completed: false,
+          link: "https://google.com",
+          reward: 500000,
+          status: "active",
+          title: "Farm 1 $EGG",
+        },
+        {
+          api: null,
+          category: "Our Projects",
+          channel_id: "@CaptainsBay_Chat",
+          id: 25,
+          is_completed: false,
+          link: "https://google.com",
+          reward: 500000,
+          status: "active",
+          title: "Hatch a duck",
+        }
+      ];
+      // return data;
+    // }
+  }
+
   const initializeProject = async () => {
     await getAttentions();
     await getEvents();
@@ -70,5 +114,7 @@ export const useGameStore = defineStore("gameStore", () => {
     events,
     getTasks,
     tasks,
+    getAdditionalTasks,
+    additionalTasks,
   };
 });
