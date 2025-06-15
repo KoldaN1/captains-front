@@ -42,7 +42,6 @@ const eventData = ref(null);
 const boostersCost = ref(null);
 
 const userId = webapp.initDataUnsafe.user?.id;
-
 const completeFarmQuest = async () => {
   try {
     axios.post(import.meta.env.VITE_BOT_API + "/api/tonstation/quest", {
@@ -87,7 +86,7 @@ const getBoosterCost = async () => {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("jwt_token")}`,
       },
-    },
+    }
   );
   if (!response || response.status !== 200 || !response.data.success) {
     console.log(response);
@@ -113,7 +112,7 @@ watch(
     } else if (newStatus === "Mining not started" || newStatus === "Mining completed and rewards claimed") {
       mainButtonText.value = proxy.$t("start_mining");
     }
-  },
+  }
 );
 
 const startCountdown = (remainingSeconds) => {
@@ -152,7 +151,7 @@ watch(
     if (newTime) {
       startCountdown(newTime);
     }
-  },
+  }
 );
 
 const userData = ref(null);
@@ -261,7 +260,7 @@ const buy_tickets = async (tickets) => {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("jwt_token")}`,
       },
-    },
+    }
   );
 
   buy_tickets_is_load.value = false;
@@ -282,11 +281,7 @@ const buy_tickets = async (tickets) => {
 const joinLoaded = ref(false);
 
 const isFarming = computed(() => {
-  return (
-    eventData.value &&
-    new Date() > new Date(eventData.value.start_date) &&
-    new Date() < new Date(eventData.value.end_date)
-  );
+  return eventData.value && new Date() > new Date(eventData.value.start_date) && new Date() < new Date(eventData.value.end_date);
 });
 
 const getTicketButtonColor = computed(() => {
@@ -347,7 +342,7 @@ const accept_special_offer = async () => {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("jwt_token")}`,
       },
-    },
+    }
   );
 
   buy_tickets_is_load.value = false;
@@ -359,8 +354,7 @@ const accept_special_offer = async () => {
         userData.value[0].is_participant = true;
         userData.value[0].tickets = tickets;
         userData.value[0].partner_coins = userData.value[0]?.special_offer.claimable_coins;
-        userData.value[0].coins +=
-          Math.floor(userData.value[0].special_offer.missed_claims / 2) * (userData.value[0].approx_hourly_income * 8);
+        userData.value[0].coins += Math.floor(userData.value[0].special_offer.missed_claims / 2) * (userData.value[0].approx_hourly_income * 8);
         bottomSheetIsOpen.value = false;
         mining_status.status = "Mining not started";
       }
@@ -370,27 +364,17 @@ const accept_special_offer = async () => {
 </script>
 
 <template>
-  <BSheet
-    v-if="eventData && eventData.status_code === 0"
-    :is_open="bottomSheetIsOpen"
-    @close="bottomSheetIsOpen = false"
-  >
+  <BSheet v-if="eventData && eventData.status_code === 0" :is_open="bottomSheetIsOpen" @close="bottomSheetIsOpen = false">
     <div v-if="eventData && userData" class="flex justify-center flex-col gap-y-4">
       <div class="flex justify-center">
         <img src="../../assets/tickets.svg" class="w-20" />
       </div>
       <h1 class="font-semibold text-xl text-center">{{ $t("cruise") }}</h1>
-      <div
-        v-if="userData && !userData[0].is_participant && userData[0].nft_data?.max_tickets_from_nft < 1"
-        class="flex gap-x-2.5 items-center bg-pantone_color text-white px-4 py-3 rounded-2xl"
-      >
+      <div v-if="userData && !userData[0].is_participant && userData[0].nft_data?.max_tickets_from_nft < 1" class="flex gap-x-2.5 items-center bg-pantone_color text-white px-4 py-3 rounded-2xl">
         <Icon icon="nonicons:error-16" class="text-2xl shrink-0" />
         <span class="text-xs font-medium">{{ $t("cruise_attention") }}</span>
       </div>
-      <div
-        v-if="userData[0]?.special_offer && !userData[0].is_participant"
-        class="flex relative overflow-hidden flex-col gap-y-1 bg-secondary_bg_color p-4 rounded-2xl"
-      >
+      <div v-if="userData[0]?.special_offer && !userData[0].is_participant" class="flex relative overflow-hidden flex-col gap-y-1 bg-secondary_bg_color p-4 rounded-2xl">
         <div class="flex z-10 gap-x-1 items-center animate-pulse">
           <Icon icon="bxs:offer" class="text-xl text-button_color" />
           <span class="font-semibold">{{ $t("special_offer") }}</span>
@@ -398,25 +382,18 @@ const accept_special_offer = async () => {
         <span class="text-xs z-10 text-hint_color">{{ $t("special_offer_description") }}</span>
         <div class="mt-2 flex gap-x-2 items-center justify-between flex-wrap">
           <div class="flex gap-x-2">
-            <span
-              class="bg-bg_color flex gap-x-1 rounded-2xl h-10 text-sm px-4 justify-center items-center font-medium"
-            >
+            <span class="bg-bg_color flex gap-x-1 rounded-2xl h-10 text-sm px-4 justify-center items-center font-medium">
               <span>{{ formatNumber(userData[0]?.special_offer.claimable_coins) }}</span>
               <span class="w-6 aspect-square rounded-[4px] overflow-hidden"><img :src="eventData.partner_logo" /></span>
             </span>
 
-            <span
-              class="bg-bg_color flex gap-x-1 rounded-2xl h-10 text-sm px-4 justify-center items-center font-medium"
-            >
+            <span class="bg-bg_color flex gap-x-1 rounded-2xl h-10 text-sm px-4 justify-center items-center font-medium">
               <span>3</span>
               <Icon icon="fluent:ticket-diagonal-16-filled" class="text-lg text-pantone_color" />
             </span>
           </div>
 
-          <button
-            @click="accept_special_offer"
-            class="flex text-sm bg-pantone_color text-white px-6 h-10 justify-center items-center rounded-xl border-b-2 border-r-2 border-text_color"
-          >
+          <button @click="accept_special_offer" class="flex text-sm bg-pantone_color text-white px-6 h-10 justify-center items-center rounded-xl border-b-2 border-r-2 border-text_color">
             <div v-if="!buy_tickets_is_load" class="flex items-center gap-x-0.5 font-medium text-white">
               <span>{{ userData[0]?.special_offer?.total_cost }}</span>
               <Icon icon="mingcute:star-fill" />
@@ -438,9 +415,7 @@ const accept_special_offer = async () => {
 
             <div class="flex mb-3 flex-col text-xs gap-y-2 justify-center items-center">
               <span class="font-medium text-sm">1 {{ $t("tip") }}</span>
-              <span class="text-hint_color text-center border-pantone_color pl-1.5">{{
-                $t("partner_hourly", { tokens: eventData.hourly_tokens["1ticket"], partner: eventData.partner })
-              }}</span>
+              <span class="text-hint_color text-center border-pantone_color pl-1.5">{{ $t("partner_hourly", { tokens: eventData.hourly_tokens["1ticket"], partner: eventData.partner }) }}</span>
             </div>
 
             <button
@@ -457,10 +432,7 @@ const accept_special_offer = async () => {
               <Icon v-else icon="line-md:loading-loop" class="text-lg" />
             </button>
 
-            <div
-              v-else
-              class="flex w-full border-r-2 border-b-2 border-text_color items-center gap-x-0.5 bg-bg_color h-10 rounded-xl py-2 text-sm justify-center font-semibold"
-            >
+            <div v-else class="flex w-full border-r-2 border-b-2 border-text_color items-center gap-x-0.5 bg-bg_color h-10 rounded-xl py-2 text-sm justify-center font-semibold">
               <Icon icon="ic:round-check" class="text-lg" />
             </div>
           </div>
@@ -474,9 +446,7 @@ const accept_special_offer = async () => {
 
             <div class="flex mb-3 flex-col text-xs gap-y-2 justify-center items-center">
               <span class="font-medium text-sm">2 {{ $t("tips_a") }}</span>
-              <span class="text-hint_color text-center border-pantone_color pl-1.5">{{
-                $t("partner_hourly", { tokens: eventData.hourly_tokens["2ticket"], partner: eventData.partner })
-              }}</span>
+              <span class="text-hint_color text-center border-pantone_color pl-1.5">{{ $t("partner_hourly", { tokens: eventData.hourly_tokens["2ticket"], partner: eventData.partner }) }}</span>
             </div>
 
             <button
@@ -486,23 +456,14 @@ const accept_special_offer = async () => {
               class="flex w-full text-white border-r-2 border-b-2 border-text_color items-center h-10 gap-x-0.5 bg-pantone_color rounded-xl py-2 text-sm justify-center font-semibold"
             >
               <div v-if="!buy_tickets_is_load" class="flex gap-x-0.5 items-center">
-                <span>{{
-                  userData[0].tickets === 0
-                    ? eventData.prices["2ticket"]
-                    : userData[0].tickets === 1
-                      ? eventData.prices["2ticket"] - eventData.prices["1ticket"]
-                      : 0
-                }}</span>
+                <span>{{ userData[0].tickets === 0 ? eventData.prices["2ticket"] : userData[0].tickets === 1 ? eventData.prices["2ticket"] - eventData.prices["1ticket"] : 0 }}</span>
                 <Icon icon="mingcute:star-fill" />
               </div>
 
               <Icon v-else icon="line-md:loading-loop" class="text-lg" />
             </button>
 
-            <div
-              v-else
-              class="flex w-full border-r-2 border-b-2 border-text_color items-center gap-x-0.5 bg-bg_color h-10 rounded-xl py-2 text-sm justify-center font-semibold"
-            >
+            <div v-else class="flex w-full border-r-2 border-b-2 border-text_color items-center gap-x-0.5 bg-bg_color h-10 rounded-xl py-2 text-sm justify-center font-semibold">
               <Icon icon="ic:round-check" class="text-lg" />
             </div>
           </div>
@@ -516,9 +477,7 @@ const accept_special_offer = async () => {
 
             <div class="flex mb-3 flex-col text-xs gap-y-2 justify-center items-center">
               <span class="font-medium text-sm">3 {{ $t("tips_a") }}</span>
-              <span class="text-hint_color text-center border-pantone_color pl-1.5">{{
-                $t("partner_hourly", { tokens: eventData.hourly_tokens["3ticket"], partner: eventData.partner })
-              }}</span>
+              <span class="text-hint_color text-center border-pantone_color pl-1.5">{{ $t("partner_hourly", { tokens: eventData.hourly_tokens["3ticket"], partner: eventData.partner }) }}</span>
             </div>
 
             <button
@@ -532,10 +491,10 @@ const accept_special_offer = async () => {
                   userData[0].tickets === 0
                     ? eventData.prices["3ticket"]
                     : userData[0].tickets === 1
-                      ? eventData.prices["3ticket"] - eventData.prices["1ticket"]
-                      : userData[0].tickets === 2
-                        ? eventData.prices["3ticket"] - eventData.prices["2ticket"]
-                        : 0
+                    ? eventData.prices["3ticket"] - eventData.prices["1ticket"]
+                    : userData[0].tickets === 2
+                    ? eventData.prices["3ticket"] - eventData.prices["2ticket"]
+                    : 0
                 }}</span>
                 <Icon icon="mingcute:star-fill" />
               </div>
@@ -543,10 +502,7 @@ const accept_special_offer = async () => {
               <Icon v-else icon="line-md:loading-loop" class="text-lg" />
             </button>
 
-            <div
-              v-else
-              class="flex w-full border-r-2 border-b-2 border-text_color items-center gap-x-0.5 bg-bg_color h-10 rounded-xl py-2 text-sm justify-center font-semibold"
-            >
+            <div v-else class="flex w-full border-r-2 border-b-2 border-text_color items-center gap-x-0.5 bg-bg_color h-10 rounded-xl py-2 text-sm justify-center font-semibold">
               <Icon icon="ic:round-check" class="text-lg" />
             </div>
           </div>
@@ -574,26 +530,17 @@ const accept_special_offer = async () => {
         </div>
 
         <div v-else>
-          <button
-            class="w-full flex justify-center border-r-2 border-b-2 border-text_color items-center rounded-2xl h-12 bg-red-500 text-white font-semibold"
-          >
+          <button class="w-full flex justify-center border-r-2 border-b-2 border-text_color items-center rounded-2xl h-12 bg-red-500 text-white font-semibold">
             <span>{{ $t("nftEntry") }}</span>
           </button>
         </div>
 
-        <button
-          @disabled="joinLoaded"
-          v-if="eventData?.api && !userData[0]?.tickets"
-          @click="joinInPartnerNFT"
-          class="text-purple-500 animate-pulse font-medium"
-        >
+        <button @disabled="joinLoaded" v-if="eventData?.api && !userData[0]?.tickets" @click="joinInPartnerNFT" class="text-purple-500 animate-pulse font-medium">
           <span v-if="!joinLoaded">*{{ $t("enter_partner_nfts") }} {{ eventData.partner }}</span>
           <span v-else>Checking...</span>
         </button>
 
-        <span v-if="!userData[0].nft_data?.max_tickets_from_nft" class="text-xs px-4 text-hint_color text-center">{{
-          $t("nft_from_event")
-        }}</span>
+        <span v-if="!userData[0].nft_data?.max_tickets_from_nft" class="text-xs px-4 text-hint_color text-center">{{ $t("nft_from_event") }}</span>
       </div>
     </div>
   </BSheet>
@@ -604,31 +551,14 @@ const accept_special_offer = async () => {
         <main class="flex flex-col gap-y-6 py-6 pb-36">
           <Heading class="px-4" :title="$t('farpad_event_title')" :description="$t('farpad_event_description')" />
 
-          <Counters
-            v-if="userData && eventData"
-            :userData="userData[0]"
-            :eventData="eventData"
-            :partner_coins="userData[0].partner_coins"
-          />
+          <Counters v-if="userData && eventData" :userData="userData[0]" :eventData="eventData" :partner_coins="userData[0].partner_coins" />
 
           <div class="flex justify-center items-center px-12">
             <div class="bg-secondary_bg_color gap-x-2 flex w-full rounded-2xl p-1">
-              <button
-                @click="activeTab = 1"
-                :class="[
-                  'flex w-1/2 font-medium text-sm items-center justify-center py-1 rounded-2xl',
-                  activeTab === 1 && 'bg-[#EAB308] text-white',
-                ]"
-              >
+              <button @click="activeTab = 1" :class="['flex w-1/2 font-medium text-sm items-center justify-center py-1 rounded-2xl', activeTab === 1 && 'bg-[#EAB308] text-white']">
                 {{ $t("event_ship") }}
               </button>
-              <button
-                @click="activeTab = 2"
-                :class="[
-                  'flex w-1/2 font-medium text-sm items-center justify-center py-1 rounded-2xl',
-                  activeTab === 2 && 'bg-[#EAB308] text-white',
-                ]"
-              >
+              <button @click="activeTab = 2" :class="['flex w-1/2 font-medium text-sm items-center justify-center py-1 rounded-2xl', activeTab === 2 && 'bg-[#EAB308] text-white']">
                 {{ $t("event_leaderboard") }}
               </button>
             </div>
@@ -637,23 +567,15 @@ const accept_special_offer = async () => {
           <transition name="fade" mode="out-in" appear>
             <div v-if="activeTab === 1" class="flex flex-col gap-y-4">
               <div class="flex justify-center gap-x-2 px-4">
-                <div
-                  class="bg-secondary_bg_color w-1/3 h-14 gap-y-1 text-sm justify-center items-start p-2 rounded-xl flex flex-col"
-                >
+                <div class="bg-secondary_bg_color w-1/3 h-14 gap-y-1 text-sm justify-center items-start p-2 rounded-xl flex flex-col">
                   <span class="text-hint_color font-medium">{{ $t("tickets") }}</span>
                   <span class="flex items-center gap-x-1.5">
                     <img src="/src/assets/ticket.svg" alt="ticket" />
-                    <span v-if="!loadingUserData && userData" class="font-semibold"
-                      >{{ userData[0].tickets }} {{ $t("farming") }}</span
-                    >
+                    <span v-if="!loadingUserData && userData" class="font-semibold">{{ userData[0].tickets }} {{ $t("farming") }}</span>
                     <span v-else class="flex w-10 h-3 bg-bg_color animate-pulse rounded-full" />
                   </span>
                 </div>
-                <button
-                  v-if="userData[0].tickets"
-                  class="bg-[#34C3C0] text-sm justify-center items-start p-2 gap-y-1 pt-2 rounded-xl flex flex-col"
-                  @click="isBoostersVisible = true"
-                >
+                <button v-if="userData[0].tickets" class="bg-[#34C3C0] text-sm justify-center items-start p-2 gap-y-1 pt-2 rounded-xl flex flex-col" @click="isBoostersVisible = true">
                   <span class="text-white font-medium">{{ $t("getBoosters") }}</span>
                   <img :src="pirateCross" alt="pirate-cross" class="self-end" />
                 </button>
@@ -667,50 +589,28 @@ const accept_special_offer = async () => {
           </transition>
         </main>
 
-        <div
-          class="flex flex-col bg-bg_color justify-center gap-y-2.5 items-center p-4 pb-6 fixed bottom-0 right-0 left-0"
-        >
+        <div class="flex flex-col bg-bg_color justify-center gap-y-2.5 items-center p-4 pb-6 fixed bottom-0 right-0 left-0">
           <button
-            :disabled="
-              mining_status?.status?.includes('Mining in progress') ||
-              !eventData ||
-              new Date(eventData.start_date) > new Date()
-            "
-            :class="[
-              'w-full relative px-4 grid grid-cols-[1fr_30px] items-center rounded-2xl h-16 text-lg font-medium',
-              getTicketButtonColor,
-            ]"
+            :disabled="mining_status?.status?.includes('Mining in progress') || !eventData || new Date(eventData.start_date) > new Date()"
+            :class="['w-full relative px-4 grid grid-cols-[1fr_30px] items-center rounded-2xl h-16 text-lg font-medium', getTicketButtonColor]"
             @click="mine"
           >
             <span v-if="isFarming">{{ mainButtonText }}</span>
-            <span v-else-if="new Date(eventData.start_date) > new Date()">{{
-              formatToUserTime(eventData.start_date)
-            }}</span>
+            <span v-else-if="new Date(eventData.start_date) > new Date()">{{ formatToUserTime(eventData.start_date) }}</span>
             <span v-else>{{ $t("getTicket") }}</span>
 
             <img :src="shipWhite" alt="ship" v-if="isFarming" class="right" />
-            <img
-              v-else-if="!isFarming"
-              :src="ticket"
-              alt="ship"
-              class="absolute right-6 w-[21px] h-[21px] event__icon-ticket"
-            />
+            <img v-else-if="!isFarming" :src="ticket" alt="ship" class="absolute right-6 w-[21px] h-[21px] event__icon-ticket" />
             <span v-else class="absolute right-6">
               <Icon icon="heroicons:lock-closed" class="text-xl" />
             </span>
           </button>
           <span class="font-medium text-sm"
-            >{{ $t("event_end_date") }}
-            <span class="text-hint_color">{{ formatToUserTime(eventData.end_date) }}</span></span
+            >{{ $t("event_end_date") }} <span class="text-hint_color">{{ formatToUserTime(eventData.end_date) }}</span></span
           >
           <transition name="slide-bottom">
             <div class="absolute inset-x-0 bottom-0 bg-bg_color transform" v-if="isBoostersVisible">
-              <Boosters
-                @close="isBoostersVisible = false"
-                :eventData="eventData"
-                :userData="userData"
-                :boostersCost="boostersCost"
-              />
+              <Boosters @close="isBoostersVisible = false" :eventData="eventData" :userData="userData" :boostersCost="boostersCost" />
             </div>
           </transition>
         </div>
@@ -719,11 +619,9 @@ const accept_special_offer = async () => {
       <div v-else class="flex justify-center relative items-center h-screen p-4">
         <span class="font-medium text-center">{{ eventData?.length > 0 ? eventData.status : "Event not found" }}</span>
         <div class="fixed bottom-0 left-0 right-0 flex justify-center items-center p-4 bg-bg_color">
-          <router-link
-            class="w-full h-12 active:opacity-75 text-text_color transition-all bg-hint_color justify-center items-center flex text-lg font-medium rounded-2xl"
-            :to="{ name: 'INDEX' }"
-            >{{ $t("back") }}</router-link
-          >
+          <router-link class="w-full h-12 active:opacity-75 text-text_color transition-all bg-hint_color justify-center items-center flex text-lg font-medium rounded-2xl" :to="{ name: 'INDEX' }">{{
+            $t("back")
+          }}</router-link>
         </div>
       </div>
     </div>

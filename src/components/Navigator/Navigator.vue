@@ -47,9 +47,9 @@ const setupAnimation = (propRef, propName) => {
         },
         () => {
           propRef.value = newVal;
-        },
+        }
       );
-    },
+    }
   );
 };
 
@@ -86,17 +86,12 @@ const copy = () => {
         @click="emit('mainButtonClicked')"
         :class="[
           'flex flex-col relative overflow-hidden w-full active:opacity-75 transition-all rounded-2xl h-16 justify-center items-center font-medium text-lg',
-          mining_status === 'Mining in progress'
-            ? 'bg-secondary_bg_color text-text_color'
-            : mining_status === 'Ready to claim'
-            ? 'bg-pantone_color text-white'
-            : 'bg-button_color text-white',
+          mining_status === 'Mining in progress' ? 'bg-secondary_bg_color text-text_color' : mining_status === 'Ready to claim' ? 'bg-pantone_color text-white' : 'bg-button_color text-white',
         ]"
       >
         <span class="z-[2] font-medium">{{ buttonText }}</span>
         <span class="text-xs flex items-center justify-center gap-x-1 font-semibold text-yellow-500" v-if="earnedCoins"
-          ><img src="../../assets/coin.svg" class="w-4 h-4" />{{ $t("sailing") }}
-          {{ formatNumber(animatedCoins) }}</span
+          ><img src="../../assets/coin.svg" class="w-4 h-4" />{{ $t("sailing") }} {{ formatNumber(animatedCoins) }}</span
         >
       </button>
 
@@ -109,9 +104,7 @@ const copy = () => {
     <div v-if="page === 'FRENS'" class="pb-4 flex gap-x-2">
       <button
         @click="share"
-        :class="[
-          'flex flex-col relative overflow-hidden w-2/3 active:opacity-75 transition-all rounded-2xl h-12 justify-center items-center font-medium bg-button_color text-white',
-        ]"
+        :class="['flex flex-col relative overflow-hidden w-2/3 active:opacity-75 transition-all rounded-2xl h-12 justify-center items-center font-medium bg-button_color text-white']"
       >
         <span class="z-[2] font-medium">{{ $t("invite") }}</span>
       </button>
@@ -144,10 +137,7 @@ const copy = () => {
       <router-link
         :to="{ name: 'QUESTS' }"
         @click="webapp.HapticFeedback.impactOccurred('light')"
-        :class="[
-          'w-1/5 flex relative flex-col items-center gap-y-0.5 justify-center',
-          page !== 'TASKS' && 'opacity-50',
-        ]"
+        :class="['w-1/5 flex relative flex-col items-center gap-y-0.5 justify-center', page !== 'TASKS' && 'opacity-50']"
       >
         <Icon icon="mdi:task-auto" class="text-2xl" />
         <span class="text-sm">{{ $t("tasks") }}</span>

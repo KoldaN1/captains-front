@@ -19,6 +19,7 @@ import checkSubscription from "../../utils/checkExists";
 
 import Ship from "../../components/Index/Ship.vue";
 import MainModal from "../../components/Modals/MainModal.vue";
+import axios from "axios";
 
 const { proxy } = getCurrentInstance();
 const gameStore = useGameStore();
@@ -122,7 +123,26 @@ const getUserData = async () => {
 
 let countdownInterval = null;
 
+const completeStartFarmQuest = async () => {
+  try {
+    await axios.post(
+      import.meta.env.VITE_BOT_API + "/api/partnerEvent/completeUserTask",
+      {
+        questType: "startFarm",
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("jwt_token")}`,
+        },
+      }
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const startMiningCountdown = (timeLeft, hourlyIncome) => {
+  completeStartFarmQuest();
   const totalTime = gameData.value.total_mining_minutes * 60;
 
   const updateCountdown = () => {
@@ -199,7 +219,7 @@ const mainButtonClicked = async (x2) => {
       "/rest/v1/rpc/v10_mine",
       x2 && {
         x2: x2,
-      },
+      }
     );
     if (error) {
       console.log(error);
@@ -354,31 +374,15 @@ const eventsData = ref(null);
           </div>
         </transition>
         <transition name="fade">
-          <Daily
-            v-if="gameData?.reward_streak && gameData.reward_amount"
-            :reward_streak="gameData?.reward_streak"
-            :reward_amount="gameData?.reward_amount"
-            @close="dailyCheck"
-          />
-          <Claim
-            :claimedCoins="gameData?.not_claimed"
-            v-else-if="gameData?.not_claimed && gameData?.not_claimed > 0"
-            @claim="claim"
-          />
+          <Daily v-if="gameData?.reward_streak && gameData.reward_amount" :reward_streak="gameData?.reward_streak" :reward_amount="gameData?.reward_amount" @close="dailyCheck" />
+          <Claim :claimedCoins="gameData?.not_claimed" v-else-if="gameData?.not_claimed && gameData?.not_claimed > 0" @claim="claim" />
         </transition>
 
-        <MainModal
-          v-if="attentions?.length > 0 && !gameData?.not_claimed && !gameData.reward_streak"
-          :isOpen="attentions_modal_opened"
-          @close="attention_close"
-        >
+        <MainModal v-if="attentions?.length > 0 && !gameData?.not_claimed && !gameData.reward_streak" :isOpen="attentions_modal_opened" @close="attention_close">
           <div class="rounded-2xl overflow-hidden p-1 relative min-h-40">
             <img :src="attentions[attentions.length - 1].image_url" class="w-full rounded-xl h-full" />
             <div class="absolute bottom-0 left-0 right-0 p-4">
-              <router-link
-                :to="attentions[attentions.length - 1].page"
-                class="w-full p-4 rounded-2xl bg-pantone_color border-text_color border-b-2 border-r-2 flex justify-center font-medium"
-              >
+              <router-link :to="attentions[attentions.length - 1].page" class="w-full p-4 rounded-2xl bg-pantone_color border-text_color border-b-2 border-r-2 flex justify-center font-medium">
                 {{ attentions[attentions.length - 1].button_title }}
               </router-link>
             </div>

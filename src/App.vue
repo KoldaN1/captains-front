@@ -18,6 +18,7 @@ import i18n from "./i18n";
 const TECH_WORK = false;
 const TECH_WORK_USERS = [1259156988, 477376998, 442607384, 284102087, 212104289];
 
+<<<<<<< Updated upstream
 const webapp = window.Telegram.WebApp.initData
   ? window.Telegram.WebApp
   : {
@@ -148,6 +149,141 @@ const webapp = window.Telegram.WebApp.initData
         isAccessGranted: false,
       },
     };
+=======
+if (!window.Telegram.WebApp) {
+  window.Telegram.WebApp = {
+    initData:
+      "user=%7B%22id%22%3A1259156988%2C%22first_name%22%3A%22synop%27s%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22reCAPTCHAs%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%2C%22photo_url%22%3A%22https%3A%5C%2F%5C%2Ft.me%5C%2Fi%5C%2Fuserpic%5C%2F320%5C%2FgyYD1FKI5zgEOAW_rUO6u2oWnVvxjaX_2-ZF15SrmyE.svg%22%7D&chat_instance=-1687966762080056638&chat_type=private&auth_date=1748819669&signature=exTWRIaGZusNrO56U8h9TvjslXXkP1aAjllk_GTtyoNXb5PdkYLoqxg6cqLdMkxvx2Kwgn-dm2tdMRpqXKlbBw&hash=d712942a95377888aaadba033a7adc27dd362829d0f17f41d58aa1dc0a7fe24e",
+    initDataUnsafe: {
+      user: {
+        id: 1259156988,
+        first_name: "synop's",
+        last_name: "",
+        username: "reCAPTCHAs",
+        language_code: "ru",
+        is_premium: true,
+        allows_write_to_pm: true,
+        photo_url: "https://t.me/i/userpic/320/gyYD1FKI5zgEOAW_rUO6u2oWnVvxjaX_2-ZF15SrmyE.svg",
+      },
+      chat_instance: "-1687966762080056638",
+      chat_type: "private",
+      auth_date: "1748819669",
+      signature: "exTWRIaGZusNrO56U8h9TvjslXXkP1aAjllk_GTtyoNXb5PdkYLoqxg6cqLdMkxvx2Kwgn-dm2tdMRpqXKlbBw",
+      hash: "d712942a95377888aaadba033a7adc27dd362829d0f17f41d58aa1dc0a7fe24e",
+    },
+    version: "9.0",
+    platform: "tdesktop",
+    colorScheme: "dark",
+    themeParams: {
+      accent_text_color: "#a4c2e9",
+      bg_color: "#191c21",
+      bottom_bar_bg_color: "#191c21",
+      button_color: "#697b97",
+      button_text_color: "#ffffff",
+      destructive_text_color: "#ec3942",
+      header_bg_color: "#191c21",
+      hint_color: "#666d77",
+      link_color: "#a4c2ea",
+      secondary_bg_color: "#24272e",
+      section_bg_color: "#191c21",
+      section_header_text_color: "#a4c2ea",
+      section_separator_color: "#131519",
+      subtitle_text_color: "#666d77",
+      text_color: "#f5f5f5",
+    },
+    isExpanded: true,
+    viewportHeight: 590,
+    viewportStableHeight: 590,
+    safeAreaInset: {
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+    },
+    contentSafeAreaInset: {
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+    },
+    isClosingConfirmationEnabled: false,
+    isVerticalSwipesEnabled: false,
+    isFullscreen: false,
+    isOrientationLocked: false,
+    isActive: true,
+    headerColor: "#191c21",
+    backgroundColor: "#191c21",
+    bottomBarColor: "#191c21",
+    BackButton: {
+      isVisible: false,
+    },
+    MainButton: {
+      type: "main",
+      text: "Continue",
+      color: "#697b97",
+      textColor: "#ffffff",
+      isVisible: false,
+      isProgressVisible: false,
+      isActive: true,
+      hasShineEffect: false,
+    },
+    SecondaryButton: {
+      type: "secondary",
+      text: "Cancel",
+      color: "#191c21",
+      textColor: "#697b97",
+      isVisible: false,
+      isProgressVisible: false,
+      isActive: true,
+      hasShineEffect: false,
+      position: "left",
+    },
+    SettingsButton: {
+      isVisible: false,
+    },
+    HapticFeedback: {},
+    CloudStorage: {},
+    DeviceStorage: {},
+    SecureStorage: {},
+    BiometricManager: {
+      isInited: false,
+      isBiometricAvailable: false,
+      biometricType: "unknown",
+      isAccessRequested: false,
+      isAccessGranted: false,
+      isBiometricTokenSaved: false,
+      deviceId: "",
+    },
+    Accelerometer: {
+      isStarted: false,
+      x: null,
+      y: null,
+      z: null,
+    },
+    DeviceOrientation: {
+      isStarted: false,
+      absolute: false,
+      alpha: null,
+      beta: null,
+      gamma: null,
+    },
+    Gyroscope: {
+      isStarted: false,
+      x: null,
+      y: null,
+      z: null,
+    },
+    LocationManager: {
+      isInited: false,
+      isLocationAvailable: false,
+      isAccessRequested: false,
+      isAccessGranted: false,
+    },
+  };
+}
+const webapp = window.Telegram.WebApp;
+
+>>>>>>> Stashed changes
 window.Telegram.WebApp = webapp;
 const gameStore = useGameStore();
 const router = useRouter();
@@ -179,6 +315,7 @@ onMounted(async () => {
     isAuthorized.value = true;
   } else {
     const jwt = await getJWT(webapp.initData);
+    // const jwt = await getJWT(webapp.initDataUnsafe?.user.id);
     if (jwt) {
       sessionStorage.setItem("jwt_token", jwt.token);
       session_token = jwt.token;
@@ -219,11 +356,7 @@ onMounted(async () => {
   <router-view v-if="!loading" v-slot="{ Component }">
     <div class="gameView">
       <transition name="fade" appear>
-        <NOT_FOUND_TECH
-          v-if="
-            TECH_WORK && webapp.initDataUnsafe.user?.id && !TECH_WORK_USERS.includes(webapp.initDataUnsafe.user?.id)
-          "
-        />
+        <NOT_FOUND_TECH v-if="TECH_WORK && webapp.initDataUnsafe.user?.id && !TECH_WORK_USERS.includes(webapp.initDataUnsafe.user?.id)" />
         <div v-else="!TECH_WORK">
           <NOT_FOUND v-if="isError" />
           <div v-else-if="isAuthorized">

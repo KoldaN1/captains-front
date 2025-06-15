@@ -249,9 +249,9 @@
   "cruise_attention": "To participate in the Pirate Cruise, you need to purchase a ticket or NFT",
   "buy_nft": "Buy NFT on GetGems",
   "nft_from_event": "NFTs from Captains Bay provide unlimited tickets for participation in cruises",
-  "nft_tickets": "You already have an NFT that gives {tips} tickets. Click to participate",
+  "nft_tickets": "You already have an NFT. Click to participate and receive 1 ticket",
   "multiple_captains_bay_per_hour": "{multiple} Captains Bay coins per hour",
-  "partner_hourly": "+{tokens} {partner} tokens per hour",
+  "partner_hourly": "+{tokens} tokens per hour",
   "tip": "Ticket",
   "tips_a": "Tickets",
   "events": "Events",
@@ -513,5 +513,17 @@
   "oneTicket": "One Ticket",
   "twoTickets": "Two Tickets",
   "threeTickets": "Three Tickets",
+<<<<<<< Updated upstream
   "nftEntry": "NFT entry to this event is not available"
+=======
+  "nftEntry": "NFT entry to this event is not available",
+  "ducky_gram": {
+    "title": "Duckygram",
+    "description": "Dive into Duckygram, collect ducks and win extra reward!",
+    "reward": "Reward",
+    "complete-btn": "COMPLETE QUEST",
+    "completed": "COMPLETED"
+  },
+  "quests": "Quests"
+>>>>>>> Stashed changes
 }

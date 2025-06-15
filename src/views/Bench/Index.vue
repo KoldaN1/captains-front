@@ -46,6 +46,24 @@ const comeplteEnchanceQuest = async () => {
   }
 };
 
+const completeLevelUpQuest = async () => {
+  try {
+    await axios.post(
+      import.meta.env.VITE_BOT_API + "/api/partnerEvent/completeUserTask",
+      {
+        questType: "upLvlShip",
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("jwt_token")}`,
+        },
+      }
+    );
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const getUserShips = async () => {
   let { data, error } = await axiosInstance.post("/rest/v1/rpc/v8_get_user_ships");
   if (error) console.error(error);
@@ -96,11 +114,7 @@ const buy = async (ship) => {
       webapp.HapticFeedback.notificationOccurred("error");
       addAlert(proxy.$t("error"), "error");
     } else {
-      if (
-        data[0]?.type === "first_ship_not_purchased" ||
-        data[0]?.type === "previous_ship_level_too_low" ||
-        data[0]?.type === "previous_ships_not_ready"
-      ) {
+      if (data[0]?.type === "first_ship_not_purchased" || data[0]?.type === "previous_ship_level_too_low" || data[0]?.type === "previous_ships_not_ready") {
         webapp.HapticFeedback.notificationOccurred("error");
         addAlert(data[0].status, "error");
         return;
@@ -115,8 +129,7 @@ const buy = async (ship) => {
         gameData.value.coins -= ship.price;
         gameData.value.ship = ship.ship_id;
         gameData.value.hourly_income += ship.income_per_hour;
-        ships.value[index].upgrade_cost =
-          ships.value[index].upgrade_cost * ships.value[index].update_multiplier * ships.value[index].update_multiplier;
+        ships.value[index].upgrade_cost = ships.value[index].upgrade_cost * ships.value[index].update_multiplier * ships.value[index].update_multiplier;
       }
 
       webapp.HapticFeedback.notificationOccurred("success");
@@ -201,6 +214,7 @@ const upgrade = async (ship) => {
         addAlert(proxy.$t("error"), "error");
       } else {
         comeplteEnchanceQuest();
+        completeLevelUpQuest();
         gameData.value.coins -= ship.upgrade_cost;
         ships.value[index].time_left_to_upgrade = data[0].time_left_to_upgrade;
 
@@ -292,17 +306,13 @@ const is_modal = ref(false);
 
   <BottomSheet :is_open="is_modal" @close="() => (is_modal = false)">
     <template #top>
-      <router-link
-        :to="selected_ship ? { name: 'HIRING_NFTS', params: { id: selected_ship } } : '#'"
-        class="text-text_color flex justify-center h-full items-center text-[64px] font-black uppercase"
+      <router-link :to="selected_ship ? { name: 'HIRING_NFTS', params: { id: selected_ship } } : '#'" class="text-text_color flex justify-center h-full items-center text-[64px] font-black uppercase"
         >NFT</router-link
       >
     </template>
 
     <template #bottom>
-      <router-link
-        :to="selected_ship ? { name: 'HIRING_FRENS', params: { id: selected_ship } } : '#'"
-        class="text-white flex justify-center h-full items-center text-[40px] font-black uppercase"
+      <router-link :to="selected_ship ? { name: 'HIRING_FRENS', params: { id: selected_ship } } : '#'" class="text-white flex justify-center h-full items-center text-[40px] font-black uppercase"
         >Frens</router-link
       >
     </template>

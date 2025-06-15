@@ -63,9 +63,7 @@ const getLeaders = async () => {
 const getUserPostion = (newVal) => {
   try {
     if (!leaders?.value.leaderboard) return;
-    let newValueTop = leaders?.value.leaderboard
-      .filter((user) => (newVal ? user.tickets == newVal : true))
-      .findIndex((user) => user.user == props.userId);
+    let newValueTop = leaders?.value.leaderboard.filter((user) => (newVal ? user.tickets == newVal : true)).findIndex((user) => user.user == props.userId);
     if (newValueTop > -1) {
       myPostionInTop.value = newValueTop + 1;
     } else {
@@ -91,8 +89,7 @@ watch(selectedTicketCountInLeaderboard, async (newVal) => {
     <div v-if="leaders" class="bg-secondary_bg_color flex flex-col gap-y-3 py-4 px-6 rounded-3xl">
       <div class="flex justify-between items-center">
         <span class="font-semibold">{{ $t("leaders") }}</span>
-        <span
-          class="text-xs font-medium text-hint_color bg-bg_color flex justify-center items-center rounded-2xl px-2 py-1"
+        <span class="text-xs font-medium text-hint_color bg-bg_color flex justify-center items-center rounded-2xl px-2 py-1"
           >{{ $t("position") }} {{ myPostionInTop > 10000 ? ">10k" : myPostionInTop || "-" }}</span
         >
       </div>
@@ -114,9 +111,7 @@ watch(selectedTicketCountInLeaderboard, async (newVal) => {
 
       <div v-if="leaders?.leaderboard" class="flex flex-col gap-y-2">
         <Leader
-          v-for="(user, index) in leaders?.leaderboard.filter((user) =>
-            selectedTicketCountInLeaderboard ? user.tickets == selectedTicketCountInLeaderboard : true,
-          )"
+          v-for="(user, index) in leaders?.leaderboard.filter((user) => (selectedTicketCountInLeaderboard ? user.tickets == selectedTicketCountInLeaderboard : true))"
           :key="index"
           :user="user"
           :position="index + 1"

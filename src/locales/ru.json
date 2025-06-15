@@ -250,10 +250,10 @@
   "cruise": "Вход на пиратский круиз",
   "cruise_attention": "Для участия в пиратском круизе вам нужно приобрести билет или NFT",
   "buy_nft": "Купить NFT на GetGems",
-  "nft_from_event": "NFT от Captains Bay дают неограниченное количество билетов для участия в круизах",
-  "nft_tickets": "У вас уже есть NFT, которая дает {tips} билетов. Кликните, чтобы принять участие",
+  "nft_from_event": "NFT от Captains Bay дают 1 билет для участия в круизах",
+  "nft_tickets": "У вас уже есть NFT. Кликните, чтобы принять участие и получить 1 билет",
   "multiple_captains_bay_per_hour": "{multiple} Captains Bay coins в час",
-  "partner_hourly": "+{tokens} токенов {partner} в час",
+  "partner_hourly": "+{tokens} токенов в час",
   "tip": "Билет",
   "tips_a": "Билета",
   "events": "События",
@@ -508,5 +508,17 @@
   "oneTicket": "Один билет",
   "twoTickets": "Два билета",
   "threeTickets": "Три билета",
+<<<<<<< Updated upstream
   "nftEntry": "Вход на данный ивент с помощью NFT не доступен"
+=======
+  "nftEntry": "Вход на данный ивент с помощью NFT не доступен",
+  "ducky_gram": {
+    "title": "Дакиграм",
+    "description": "Погрузитесь в Duckygram, собирайте уток и получайте дополнительную награду!",
+    "reward": "Награда",
+    "complete-btn": "ЗАВЕРШИТЬ КВЕСТ",
+    "completed": "ЗАВЕРШЕН"
+  },
+  "quests": "Квесты"
+>>>>>>> Stashed changes
 }

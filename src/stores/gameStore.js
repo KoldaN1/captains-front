@@ -54,6 +54,47 @@ export const useGameStore = defineStore("gameStore", () => {
     }
   };
 
+<<<<<<< Updated upstream
+=======
+  const getAdditionalTasks = async () => {
+    additionalTasks.value = [
+      {
+        api: null,
+        category: "Our Projects",
+        channel_id: "@CaptainsBay_Chat",
+        id: "duckBreeded",
+        is_completed: false,
+        link: "https://t.me/duckygram_bot/play",
+        reward: 500000,
+        status: "active",
+        title: "Breed a duck",
+      },
+      {
+        api: null,
+        category: "Our Projects",
+        channel_id: "@CaptainsBay_Chat",
+        id: "eggsEarned",
+        is_completed: false,
+        link: "https://t.me/duckygram_bot/play",
+        reward: 500000,
+        status: "active",
+        title: "Farm 1 $EGG",
+      },
+      {
+        api: null,
+        category: "Our Projects",
+        channel_id: "@CaptainsBay_Chat",
+        id: "duckHatched",
+        is_completed: false,
+        link: "https://t.me/duckygram_bot/play",
+        reward: 500000,
+        status: "active",
+        title: "Hatch a duck",
+      }
+    ];
+  }
+
+>>>>>>> Stashed changes
   const initializeProject = async () => {
     await getAttentions();
     await getEvents();

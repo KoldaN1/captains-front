@@ -47,9 +47,9 @@ const setupAnimation = (propRef, propName) => {
         },
         () => {
           propRef.value = newVal;
-        },
+        }
       );
-    },
+    }
   );
 };
 
@@ -75,9 +75,7 @@ const getImagePath = (index) => {
 
       <div class="flex flex-col bg-secondary_bg_color py-3 px-0.5 rounded-2xl gap-y-0.5 items-center w-full">
         <img src="../../../assets/coin.svg" class="w-10 h-10 rounded-full overflow-hidden" />
-        <span class="font-bold text-xl text-yellow-500"
-          >{{ animatedPerHour > 0 ? "+" : "" }}{{ formatNumber(animatedPerHour) }}</span
-        >
+        <span class="font-bold text-xl text-yellow-500">{{ animatedPerHour > 0 ? "+" : "" }}{{ formatNumber(animatedPerHour) }}</span>
         <span class="font-semibold text-xs uppercase text-hint_color">{{ $t("per_hour") }}</span>
       </div>
     </div>
@@ -96,10 +94,7 @@ const getImagePath = (index) => {
         </div>
       </router-link>
 
-      <router-link
-        :to="{ name: 'ABOUT_US' }"
-        class="flex w-1/3 justify-center h-14 relative active:opacity-75 text-sm transition-all bg-bg_color px-0.5 rounded-xl gap-y-0.5 items-center"
-      >
+      <router-link :to="{ name: 'ABOUT_US' }" class="flex w-1/3 justify-center h-14 relative active:opacity-75 text-sm transition-all bg-bg_color px-0.5 rounded-xl gap-y-0.5 items-center">
         <span class="font-semibold uppercase text-text_color">
           <Icon icon="lucide:info" class="text-2xl" />
         </span>
@@ -114,9 +109,19 @@ const getImagePath = (index) => {
       </router-link>
     </div>
 
-    <div v-if="eventsData && eventsData.length > 0">
-      <swiper :slides-per-view="eventsData.length > 1 ? 1.23 : 1" :space-between="10">
-        <swiper-slide v-for="(event, index) in eventsData" :key="index" class="swiper-slide">
+    <div>
+      <swiper
+        v-if="eventsData && eventsData.length > 0"
+        :modules="modules"
+        @swiper="onSwiper"
+        @slideChange="onSlideChange"
+        :slides-per-view="eventsData && eventsData.length > 0 ? 1.23 : 1"
+        :space-between="10"
+        :observer="true"
+        :observeParents="true"
+        :key="'swiper-' + (eventsData ? eventsData.length : 0)"
+      >
+        <swiper-slide v-for="(event, index) in eventsData" :key="index">
           <router-link
             :to="{ name: 'EVENT', params: { id: event.id } }"
             class="flex flex-col bg-secondary_bg_color py-4 justify-center relative active:opacity-75 text-sm transition-all px-2 rounded-2xl gap-y-1 items-center w-full whitespace-nowrap"
@@ -124,9 +129,17 @@ const getImagePath = (index) => {
             <span class="font-semibold uppercase text-text_color text-center">
               Captains Bay x <span class="text-pantone_color">{{ event.partner }}</span>
             </span>
-            <span class="font-medium text-hint_color uppercase text-center">
-              <span class="bg-pantone_color text-white px-1 rounded-sm">Join</span> to Farm event
-            </span>
+            <span class="font-medium text-hint_color uppercase text-center"> <span class="bg-pantone_color text-white px-1 rounded-sm">Join</span> to Farm event </span>
+          </router-link>
+        </swiper-slide>
+
+        <swiper-slide v-if="Math.floor(Date.now() / 1000) >= 1749038400">
+          <router-link
+            :to="{ name: 'QUESTS' }"
+            class="flex flex-col bg-secondary_bg_color py-4 justify-center relative active:opacity-75 text-sm transition-all px-2 rounded-2xl gap-y-1 items-center w-full whitespace-nowrap"
+          >
+            <span class="font-semibold uppercase text-text_color text-center"> Captains Bay x <span class="text-pantone_color">Duckygram</span> </span>
+            <span class="font-medium text-hint_color uppercase text-center"> <span class="bg-pantone_color text-white px-1 rounded-sm">Join</span> to Quests </span>
           </router-link>
         </swiper-slide>
       </swiper>
