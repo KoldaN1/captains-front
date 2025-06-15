@@ -18,7 +18,6 @@ import i18n from "./i18n";
 const TECH_WORK = false;
 const TECH_WORK_USERS = [1259156988, 477376998, 442607384, 284102087, 212104289];
 
-<<<<<<< Updated upstream
 const webapp = window.Telegram.WebApp.initData
   ? window.Telegram.WebApp
   : {
@@ -149,7 +148,7 @@ const webapp = window.Telegram.WebApp.initData
         isAccessGranted: false,
       },
     };
-=======
+
 if (!window.Telegram.WebApp) {
   window.Telegram.WebApp = {
     initData:
@@ -283,7 +282,6 @@ if (!window.Telegram.WebApp) {
 }
 const webapp = window.Telegram.WebApp;
 
->>>>>>> Stashed changes
 window.Telegram.WebApp = webapp;
 const gameStore = useGameStore();
 const router = useRouter();

@@ -54,8 +54,6 @@ export const useGameStore = defineStore("gameStore", () => {
     }
   };
 
-<<<<<<< Updated upstream
-=======
   const getAdditionalTasks = async () => {
     additionalTasks.value = [
       {
@@ -94,7 +92,6 @@ export const useGameStore = defineStore("gameStore", () => {
     ];
   }
 
->>>>>>> Stashed changes
   const initializeProject = async () => {
     await getAttentions();
     await getEvents();

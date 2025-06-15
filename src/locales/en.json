@@ -513,9 +513,6 @@
   "oneTicket": "One Ticket",
   "twoTickets": "Two Tickets",
   "threeTickets": "Three Tickets",
-<<<<<<< Updated upstream
-  "nftEntry": "NFT entry to this event is not available"
-=======
   "nftEntry": "NFT entry to this event is not available",
   "ducky_gram": {
     "title": "Duckygram",
@@ -525,5 +522,4 @@
     "completed": "COMPLETED"
   },
   "quests": "Quests"
->>>>>>> Stashed changes
 }
