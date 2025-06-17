@@ -280,9 +280,7 @@ if (!window.Telegram.WebApp) {
     },
   };
 }
-const webapp = window.Telegram.WebApp;
 
-window.Telegram.WebApp = webapp;
 const gameStore = useGameStore();
 const router = useRouter();
 const options = {

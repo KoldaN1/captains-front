@@ -567,7 +567,7 @@ const accept_special_offer = async () => {
           <transition name="fade" mode="out-in" appear>
             <div v-if="activeTab === 1" class="flex flex-col gap-y-4">
               <div class="flex justify-center gap-x-2 px-4">
-                <div class="bg-secondary_bg_color w-1/3 h-14 gap-y-1 text-sm justify-center items-start p-2 rounded-xl flex flex-col">
+                <div @click="bottomSheetIsOpen = true" class="bg-secondary_bg_color w-1/3 h-14 gap-y-1 text-sm justify-center items-start p-2 rounded-xl flex flex-col">
                   <span class="text-hint_color font-medium">{{ $t("tickets") }}</span>
                   <span class="flex items-center gap-x-1.5">
                     <img src="/src/assets/ticket.svg" alt="ticket" />
