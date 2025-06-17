@@ -11,6 +11,7 @@ export const useGameStore = defineStore("gameStore", () => {
   const events = ref(null);
 
   const tasks = ref(null);
+  const additionalTasks = ref(null);
 
   const getAttentions = async () => {
     let { data: attentions_data } = await axiosInstance.get("/rest/v1/attentions", {
@@ -108,5 +109,7 @@ export const useGameStore = defineStore("gameStore", () => {
     events,
     getTasks,
     tasks,
+    getAdditionalTasks,
+    additionalTasks,
   };
 });

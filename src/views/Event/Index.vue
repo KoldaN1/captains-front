@@ -456,7 +456,7 @@ const accept_special_offer = async () => {
               class="flex w-full text-white border-r-2 border-b-2 border-text_color items-center h-10 gap-x-0.5 bg-pantone_color rounded-xl py-2 text-sm justify-center font-semibold"
             >
               <div v-if="!buy_tickets_is_load" class="flex gap-x-0.5 items-center">
-                <span>{{ userData[0].tickets === 0 ? eventData.prices["2ticket"] : userData[0].tickets === 1 ? eventData.prices["2ticket"] - eventData.prices["1ticket"] : 0 }}</span>
+                <span>{{ eventData.prices["2ticket"] }}</span>
                 <Icon icon="mingcute:star-fill" />
               </div>
 
@@ -487,15 +487,7 @@ const accept_special_offer = async () => {
               class="flex text-white w-full border-r-2 border-b-2 border-text_color items-center h-10 gap-x-0.5 bg-pantone_color rounded-xl py-2 text-sm justify-center font-semibold"
             >
               <div v-if="!buy_tickets_is_load" class="flex gap-x-0.5 items-center">
-                <span>{{
-                  userData[0].tickets === 0
-                    ? eventData.prices["3ticket"]
-                    : userData[0].tickets === 1
-                    ? eventData.prices["3ticket"] - eventData.prices["1ticket"]
-                    : userData[0].tickets === 2
-                    ? eventData.prices["3ticket"] - eventData.prices["2ticket"]
-                    : 0
-                }}</span>
+                <span>{{ eventData.prices["3ticket"] }}</span>
                 <Icon icon="mingcute:star-fill" />
               </div>
 
