@@ -49,7 +49,6 @@ const removeAlert = (id) => {
 <template>
   <transition name="fade">
     <main class="flex flex-col gap-y-6 px-4 pt-6 pb-[102px]">
-      <<<<<<< Updated upstream ======= >>>>>>> Stashed changes
       <transition name="fade">
         <div v-if="alerts.length > 0" v-auto-animate class="fixed z-20 top-4 left-4 right-4 flex flex-col gap-y-1.5">
           <Alert v-for="alert in alerts" :key="alert.id" :title="alert.title" :type="alert.type" />
