@@ -238,24 +238,15 @@ const mainButtonClicked = async (x2) => {
       }
 
       if (data.status === "Mining started") {
-        show_9549301("pop")
-          .then(() => {
-            gameData.value.mining_status = "Mining in progress";
-            mainButton.text = proxy.$t("mining_progress");
+        gameData.value.mining_status = "Mining in progress";
+        mainButton.text = proxy.$t("mining_progress");
 
-            gameData.value.collection_time = data.next_claim_available_in_minutes;
-            gameData.value.mining_time_left = data.mining_time_left;
-            gameData.value.total_mining_minutes = data.total_mining_minutes;
+        gameData.value.collection_time = data.next_claim_available_in_minutes;
+        gameData.value.mining_time_left = data.mining_time_left;
+        gameData.value.total_mining_minutes = data.total_mining_minutes;
 
-            startMiningCountdown(gameData.value.total_mining_minutes * 60, gameData.value.hourly_income);
-            addAlert(proxy.$t("success"), "success");
-          })
-          .catch((e) => {
-            console.log(e);
-            addAlert(proxy.$t("error"), "error");
-            gameData.value.mining_status = "Mining in progress";
-            mainButton.text = proxy.$t("mining_progress");
-          });
+        startMiningCountdown(gameData.value.total_mining_minutes * 60, gameData.value.hourly_income);
+        addAlert(proxy.$t("success"), "success");
       }
     }
   }
