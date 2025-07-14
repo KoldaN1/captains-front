@@ -521,5 +521,6 @@
     "complete-btn": "COMPLETE QUEST",
     "completed": "COMPLETED"
   },
-  "quests": "Quests"
+  "quests": "Quests",
+  "recurring": "Recurring Quests"
 }
