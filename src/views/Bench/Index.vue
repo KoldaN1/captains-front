@@ -13,6 +13,7 @@ import axios from "axios";
 
 import Navigator from "../../components/Navigator/Navigator.vue";
 import Heading from "../../components/Other/Heading.vue";
+import getShipsPrices from "../../services/api/getShipsPrices.js";
 
 const AdController = window.Adsgram.init({ blockId: import.meta.env.VITE_ADSGRAM_BLOCK_ID });
 
@@ -65,12 +66,28 @@ const completeLevelUpQuest = async () => {
 };
 
 const getUserShips = async () => {
-  let { data, error } = await axiosInstance.post("/rest/v1/rpc/v8_get_user_ships");
-  if (error) console.error(error);
-  else ships.value = data;
+  try {
+    const response = await Promise.all([
+      axiosInstance.post("/rest/v1/rpc/v8_get_user_ships"),
+      getShipsPrices(),
+    ]);
+    const userShips = response[0];
+    const prices = response[1];
+    if (userShips.error) {
+      throw userShips.error;
+    }
+    ships.value = userShips.data.map(ship => {
+      return {
+        ...ship,
+        prices: prices.find(s => s.id === ship.ship_id),
+      }
+    });
 
-  if (gameData.value?.ship) {
-    shipIndex.value = ships.value.findIndex((ship) => ship.ship_id === gameData.value.ship);
+    if (gameData.value?.ship) {
+      shipIndex.value = ships.value.findIndex((ship) => ship.ship_id === gameData.value.ship);
+    }
+  } catch (error) {
+    console.error('[getUserShips]', error);
   }
 };
 
@@ -290,6 +307,7 @@ const is_modal = ref(false);
               :available_ads="gameData.available_ads"
               :ship="ship"
               @level_up="level_up"
+              @getUserData="getUserData"
               :selected_ship="gameData.ship"
               @select="select"
               @buy="buy"

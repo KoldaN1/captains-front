@@ -13,7 +13,7 @@ const gameStore = useGameStore();
 const emit = defineEmits(["complete", "check_error"]);
 
 const loading = ref(true);
-const tasks = ref({ OurProjects: [], PartnerProjects: [], InfluencerProjects: [], Quests: [] });
+const tasks = ref({ OurProjects: [], PartnerProjects: [], InfluencerProjects: [], RecurringTasks: [], Quests: [] });
 const openQuests = ref(false);
 const displayedPartnerProjects = ref([]);
 const displayedInfluencerProjects = ref([]);
@@ -27,7 +27,7 @@ const getTasksData = async () => {
     await gameStore.getTasks();
   }
 
-  tasks.value = gameStore.tasks || { OurProjects: [], PartnerProjects: [], InfluencerProjects: [], Quests: [] };
+  tasks.value = gameStore.tasks || { OurProjects: [], PartnerProjects: [], InfluencerProjects: [], RecurringTasks: [], Quests: [] };
 
   if (tasks.value.OurProjects?.length > 0) {
     tasks.value.OurProjects.sort((a, b) => a.id - b.id);
@@ -38,6 +38,11 @@ const getTasksData = async () => {
   if (tasks.value.InfluencerProjects?.length > 0) {
     tasks.value.InfluencerProjects.sort((a, b) => b.id - a.id);
   }
+
+  if (tasks.value.RecurringTasks?.length > 0) {
+    tasks.value.RecurringTasks.sort((a, b) => b.id - a.id);
+  }
+
   if (!tasks.value.Quests?.length) {
     tasks.value.Quests = [
       {
@@ -71,6 +76,13 @@ const completeTask = async (task, category) => {
     const taskIndex = tasks.value.OurProjects?.findIndex((el) => el.id === task.id);
     if (taskIndex !== -1 && taskIndex !== undefined) {
       tasks.value.OurProjects[taskIndex].is_completed = true;
+    }
+  } else if (category === "RecurringTasks") {
+    const taskIndex = tasks.value.RecurringTasks?.findIndex((el) => el.id === task.id);
+    if (taskIndex !== -1 && taskIndex !== undefined) {
+      tasks.value.RecurringTasks[taskIndex].is_completed = true;
+      tasks.value.RecurringTasks[taskIndex].last_claim_timestamp = Math.floor(Date.now() / 1000);
+      tasks.value.RecurringTasks[taskIndex].next_claim_seconds = task.every_seconds || 0;
     }
   } else if (category === "Quests") {
     tasks.value.Quests[0].is_completed = true;
@@ -108,6 +120,15 @@ watch(displayedInfluencerProjects, (newVal) => {
       <div v-if="tasks.Quests?.length > 0" class="flex flex-col gap-y-2">
         <QuestsItem v-if="Math.floor(Date.now() / 1000) >= 1749038400" @click="openQuests = true" :task="tasks.Quests[0]" />
       </div>
+
+      <div v-if="tasks.RecurringTasks?.length > 0" class="flex flex-col gap-y-2">
+        <div class="font-semibold flex items-center gap-x-1">
+          <Icon icon="mdi:success-bold" />
+          <span>{{ $t("recurring") }}</span>
+        </div>
+        <Item v-for="task in tasks.RecurringTasks" :key="task.id" :task="task" @complete="completeTask(task, 'RecurringTasks')" @check_error="emit('check_error')" />
+      </div>
+
       <div v-if="tasks.OurProjects?.length > 0" class="flex flex-col gap-y-2">
         <div class="font-semibold flex items-center gap-x-1">
           <Icon icon="mdi:success-bold" />
