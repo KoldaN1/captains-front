@@ -8,8 +8,6 @@ const getShipInvoice = async (shipId) => {
       },
     });
     
-    console.log('[getShipInvoice]', response);
-    
     return response.data.link;
   } catch (error) {
     console.error("[getShipInvoice]", error);

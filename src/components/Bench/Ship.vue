@@ -7,6 +7,8 @@ import Boosters from './Boosters.vue'
 import getFinePrice from "../../utils/getFinePrice.js";
 import getShipInvoice from "../../services/api/getShipInvoice.js";
 import {timeout} from "../../utils/timeout.js";
+import getShipPayload from "../../services/api/getShipPayload.js";
+import {useTonConnectUI} from "@townsquarelabs/ui-vue";
 
 const router = useRouter()
 
@@ -174,6 +176,39 @@ const onPurchaseStars = async () => {
   isPurchasing.value = false;
 }
 
+const [tonConnectUI] = useTonConnectUI();
+
+const onPurchaseTon = async () => {
+  try {
+    if (isPurchasing.value || !props.ship.prices.tonPrice) return;
+
+    webapp.HapticFeedback.impactOccurred('light');
+    isPurchasing.value = true;
+    isStarsPurchase.value = false;
+    const data = await getShipPayload(props.ship.ship_id);
+    console.log('[getShipPayload]', data);
+
+    const myTransaction = {
+      validUntil: Math.floor(Date.now() + 60 * 1000),
+      messages: [
+        {
+          address: data.wallet,
+          amount: data.amount,
+          payload: data.payload,
+        },
+      ],
+    };
+
+    const result = await tonConnectUI.sendTransaction(myTransaction);
+
+    await timeout(60 * 1000);
+    emit('getUserData');
+  } catch (error) {
+    console.error('[onPurchaseTon]', error);
+  }
+  isPurchasing.value = false;
+}
+
 </script>
 
 <template>
@@ -309,7 +344,7 @@ const onPurchaseStars = async () => {
                   {
                     disabled: (isPurchasing && isStarsPurchase) || !ship.prices.tonPrice
                   }
-              ]">
+              ]" @click="onPurchaseTon()">
                 <template v-if="isPurchasing && !isStarsPurchase">
                   <Icon icon="line-md:loading-twotone-loop" class="text-lg" />
                 </template>
