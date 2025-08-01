@@ -306,6 +306,8 @@ onMounted(async () => {
   webapp.ready?.();
 
   let session_token = sessionStorage.getItem("jwt_token");
+  console.log('JWT INIT DATA', webapp.initData);
+  console.log('SESSION TOKEN', session_token);
 
   if (session_token) {
     isAuthorized.value = true;

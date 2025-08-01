@@ -1,4 +1,5 @@
 import axios from "axios";
+import {supabase} from "./supabase.js";
 
 const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_SUPABASE_URL,

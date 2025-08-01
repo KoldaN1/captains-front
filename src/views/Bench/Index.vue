@@ -13,6 +13,9 @@ import axios from "axios";
 
 import Navigator from "../../components/Navigator/Navigator.vue";
 import Heading from "../../components/Other/Heading.vue";
+import getShipsPrices from "../../services/api/getShipsPrices.js";
+import getAirdropStatus from "../../services/api/getAirdropStatus.js";
+import FarmPadSwitcher from "../../components/Bench/FarmPadSwitcher.vue";
 
 const AdController = window.Adsgram.init({ blockId: import.meta.env.VITE_ADSGRAM_BLOCK_ID });
 
@@ -65,12 +68,29 @@ const completeLevelUpQuest = async () => {
 };
 
 const getUserShips = async () => {
-  let { data, error } = await axiosInstance.post("/rest/v1/rpc/v8_get_user_ships");
-  if (error) console.error(error);
-  else ships.value = data;
+  try {
+    const response = await Promise.all([
+      axiosInstance.post("/rest/v1/rpc/v8_get_user_ships"),
+      getShipsPrices(),
+    ]);
+    const userShips = response[0];
+    const prices = response[1];
+    if (userShips.error) {
+      throw userShips.error;
+    }
+    ships.value = userShips.data.map(ship => {
+      return {
+        ...ship,
+        prices: prices.find(s => s.id === ship.ship_id),
+      }
+    });
 
-  if (gameData.value?.ship) {
-    shipIndex.value = ships.value.findIndex((ship) => ship.ship_id === gameData.value.ship);
+    if (gameData.value?.ship) {
+      shipIndex.value = ships.value.findIndex((ship) => ship.ship_id === gameData.value.ship);
+    }
+    airdropAvailable.value = gameData.value?.total_user_ships >= 9;
+  } catch (error) {
+    console.error('[getUserShips]', error);
   }
 };
 
@@ -93,6 +113,8 @@ const getUserData = async () => {
 onMounted(async () => {
   await getUserData();
 });
+
+const airdropAvailable = ref(false);
 
 const select = async (ship) => {
   webapp.HapticFeedback.impactOccurred("light");
@@ -279,7 +301,7 @@ const is_modal = ref(false);
 
       <Counter :coins="gameData?.coins || 0" :per_hour="gameData?.hourly_income || 0" />
 
-      <div class="z-0">
+      <div class="z-0" v-if="airdropAvailable">
         <swiper :slides-per-view="'1.1'" space-between="12px" :initial-slide="shipIndex">
           <swiper-slide v-for="(ship, index) in ships" :key="index" class="swiper-slide">
             <Card
@@ -289,7 +311,9 @@ const is_modal = ref(false);
               :ads_restore_time_left="gameData.ads_restore_time_left"
               :available_ads="gameData.available_ads"
               :ship="ship"
+              :airdropAvailable="airdropAvailable"
               @level_up="level_up"
+              @getUserData="getUserData"
               :selected_ship="gameData.ship"
               @select="select"
               @buy="buy"
@@ -298,6 +322,11 @@ const is_modal = ref(false);
             />
           </swiper-slide>
         </swiper>
+      </div>
+      <div class="z-0" v-else>
+        <div style="margin: 0 12px">
+          <FarmPadSwitcher />
+        </div>
       </div>
     </main>
   </transition>
