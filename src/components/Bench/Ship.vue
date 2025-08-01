@@ -31,6 +31,7 @@ const props = defineProps({
   available_ads: Number,
   ads_restore_time_left: Number,
   buttonActivity: Boolean,
+  airdropAvailable: Boolean,
 })
 
 const webapp = window.Telegram.WebApp
@@ -143,6 +144,10 @@ const openLinked = (e) => {
   }
 }
 
+const openFarmPad = () => {
+  router.push({name: 'JOIN_TO_FARMPAD'});
+}
+
 const invoicePromise = (invoiceLink) => new Promise((fulfill, reject) => {
   try {
     webapp.openInvoice(invoiceLink, status => {
@@ -186,7 +191,6 @@ const onPurchaseTon = async () => {
     isPurchasing.value = true;
     isStarsPurchase.value = false;
     const data = await getShipPayload(props.ship.ship_id);
-    console.log('[getShipPayload]', data);
 
     const myTransaction = {
       validUntil: Math.floor(Date.now() + 60 * 1000),
@@ -269,11 +273,21 @@ const onPurchaseTon = async () => {
           </button>
 
           <div v-else-if="ship.is_purchased" class="relative">
-            <button :disabled="ship.user_level >= ship.max_level || timeLeftToUpgrade || buttonActivity"
-                    @click="(e) => emit('upgrade', ship)"
-                    :class="['bg-button_color relative rounded-2xl shadow-sm active:opacity-75 transition-all p-2.5 text-white w-full font-semibold uppercase', { 'bg-slate-500 cursor-not-allowed': timeLeftToUpgrade }]">
-              <span v-if="ship.user_level >= ship.max_level">{{ $t('max_level') }}</span>
-              <span v-else-if="timeLeftToUpgrade">
+            <template v-if="props.airdropAvailable">
+              <button :disabled="ship.user_level >= ship.max_level || timeLeftToUpgrade || buttonActivity"
+                      @click="openFarmPad"
+                      :class="['bg-button_color relative rounded-2xl shadow-sm active:opacity-75 transition-all p-2.5 text-white w-full font-semibold uppercase', { 'bg-slate-500 cursor-not-allowed': timeLeftToUpgrade }]">
+                <span>
+                  {{ $t('activate_airdrop') }}
+                </span>
+              </button>
+            </template>
+            <template v-else>
+              <button :disabled="ship.user_level >= ship.max_level || timeLeftToUpgrade || buttonActivity"
+                      @click="(e) => emit('upgrade', ship)"
+                      :class="['bg-button_color relative rounded-2xl shadow-sm active:opacity-75 transition-all p-2.5 text-white w-full font-semibold uppercase', { 'bg-slate-500 cursor-not-allowed': timeLeftToUpgrade }]">
+                <span v-if="ship.user_level >= ship.max_level">{{ $t('max_level') }}</span>
+                <span v-else-if="timeLeftToUpgrade">
                                 <span>{{ $t('upgraded') }} {{ formatTimeLeft(timeLeftToUpgrade) }}</span>
                                 <button v-if="available_ads" :disabled="!available_ads || buttonActivity"
                                         @click="() => emit('cut_time', ship)"
@@ -289,8 +303,9 @@ const onPurchaseTon = async () => {
                                   </div> -->
                                 </button>
                             </span>
-              <span v-else>{{ $t('upgrade') }} {{ formatNumber(ship.upgrade_cost) }} {{ $t('coins') }}</span>
-            </button>
+                <span v-else>{{ $t('upgrade') }} {{ formatNumber(ship.upgrade_cost) }} {{ $t('coins') }}</span>
+              </button>
+            </template>
           </div>
           <div class="ship-upgrade">
             <div class="ship-upgrade-block">
