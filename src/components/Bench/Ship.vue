@@ -313,10 +313,10 @@ const onPurchaseTon = async () => {
                 <path d="M11.9568 1.78525L14.0568 6.06551C14.2225 6.40302 14.5415 6.63653 14.9115 6.69016L19.6075 7.37671C20.9397 7.57145 21.472 9.21851 20.5074 10.1632L17.1097 13.4961C16.8423 13.7585 16.7201 14.1364 16.7832 14.5069L17.5855 19.2114C17.8127 20.5465 16.4207 21.564 15.2287 20.9335L11.0289 18.712C10.6983 18.5371 10.303 18.5371 9.9724 18.712L5.77258 20.9335C4.58071 21.5639 3.18863 20.5457 3.41584 19.2114L4.21807 14.5069C4.28123 14.1364 4.15901 13.7585 3.8916 13.4961L0.492258 10.1641C-0.47156 9.21843 0.0599701 7.57211 1.39211 7.37755L6.08815 6.69101C6.45809 6.63654 6.77801 6.40301 6.94288 6.06635L9.04279 1.7861C9.63913 0.571438 11.36 0.571438 11.9564 1.78527L11.9568 1.78525Z" fill="#F87C56"/>
               </svg>
               <div class="ship-upgrade-title">
-                Telegram Stars
+                {{ $t('buy_ship_stars_title') }}
               </div>
               <div class="ship-upgrade-text">
-                Buy this ship with STARS and get this ship with MAX Level
+                {{ $t('buy_ship_stars_text') }}
               </div>
               <button :class="[
                   'ship-upgrade-button',
@@ -348,10 +348,10 @@ const onPurchaseTon = async () => {
                 <path d="M7.39062 11.6744H13.7301L11.7906 8.31875C11.7143 8.19116 11.5746 8.11035 11.4221 8.11035H9.69858C9.54613 8.11035 9.40638 8.19116 9.33015 8.31875L7.39062 11.6744Z" fill="#549BF8"/>
               </svg>
               <div class="ship-upgrade-title">
-                Transaction
+                {{ $t('buy_ship_ton_title') }}
               </div>
               <div class="ship-upgrade-text">
-                Make a transaction with TON and get this ship FREE with MAX Level
+                {{ $t('buy_ship_ton_text') }}
               </div>
               <button :class="[
                   'ship-upgrade-button',
