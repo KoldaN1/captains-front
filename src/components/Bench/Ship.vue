@@ -423,7 +423,7 @@ const onPurchaseTon = async () => {
   margin-top: 24px;
 
   &-block {
-    background: white;
+    background: var(--tg-theme-bg-color, white);
     border-radius: 10px;
     padding: 16px 8px;
     gap: 8px;
@@ -437,12 +437,13 @@ const onPurchaseTon = async () => {
     font-size: 16px;
     font-weight: 500;
     line-height: 16px;
-    color: rgba(0, 0, 0, 1);
+    color: var(--tg-theme-text-color, rgba(0, 0, 0, 1));
   }
   &-text {
     font-size: 12px;
     line-height: 14px;
-    color: rgba(0, 0, 0, 0.6);
+    color: var(--tg-theme-text-color, rgba(0, 0, 0, 1));
+    opacity: 0.6;
     text-align: center;
   }
   &-button {
