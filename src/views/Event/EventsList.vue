@@ -8,6 +8,10 @@ import { useGameStore } from "../../stores/gameStore.js";
 import { useEventsStore } from "../../stores/events.js";
 import ButtonTutorial from "../../components/ButtonTutorial/ButtonTutorial.vue";
 import addCircle from "../../assets/add-circle.svg";
+import FarmPadSwitcher from "../../components/Bench/FarmPadSwitcher.vue";
+
+const AIRDROP_PAGE = 'air-drop';
+const EVENTS_PAGE = 'events';
 
 const router = useRouter();
 
@@ -23,7 +27,7 @@ function switchPage(page) {
 const { gameData } = useGameStore();
 
 const goToInstructionPage = () => {
-  if (activePage.value === "events") {
+  if (activePage.value === EVENTS_PAGE) {
     router.push({ name: "PARTICIPATION_TUTORIAL_EVENTS" });
 
     return;
@@ -31,6 +35,7 @@ const goToInstructionPage = () => {
 
   router.push({ name: "PARTICIPATION_TUTORIAL_AIRDROP" });
 };
+
 </script>
 
 <template>
@@ -49,7 +54,10 @@ const goToInstructionPage = () => {
         @click="goToInstructionPage"
       />
     </div>
-    <EventsLists v-if="activePage === 'events'" class="mt-6" />
+    <div class="events-list-airdrop" v-if="activePage === AIRDROP_PAGE">
+      <FarmPadSwitcher :isAirDrop="true" />
+    </div>
+    <EventsLists v-if="activePage === EVENTS_PAGE" class="mt-6" />
     <Navigator
       :uncompleted_tasks="gameData?.uncompleted_tasks > 0"
       page="FARMPAD"
@@ -59,6 +67,9 @@ const goToInstructionPage = () => {
 </template>
 
 <style scoped>
+.events-list-airdrop {
+  margin: 24px 12px;
+}
 .events-list {
   display: flex;
   flex-direction: column;
