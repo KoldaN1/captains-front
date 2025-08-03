@@ -3,12 +3,15 @@
 import {useRouter} from "vue-router";
 import {onMounted, ref} from "vue";
 import getAirdropStatus from "../../services/api/getAirdropStatus.js";
+import formatTime from "../../utils/formatTime.js";
+import formatToUserTime from "../../utils/formateToUserTime.js";
+import {Icon} from "@iconify/vue";
 
 const props = defineProps({
   isAirDrop: Boolean,
 });
 
-const router = useRouter()
+const router = useRouter();
 
 const haveNft = ref(false);
 
@@ -18,23 +21,27 @@ onMounted(async () => {
   haveNft.value = status?.haveNft;
 })
 
-console.log('props', props);
+const loading = ref(false);
 
 const onClick = () => {
+  loading.value = true;
   router.push({
     name: 'EVENTS',
-    params: {
-      page: 'airdrop',
+    query: {
+      page: 'air-drop',
     }
   })
 }
+
+const date = new Date('2025-10-06 12:00');
+const time = formatToUserTime(date);
 
 </script>
 
 <template>
   <div class="flex flex-col items-center">
     <div class="flex flex-col gap-y-4 w-full">
-      <div class="flex flex-col font-medium rounded-2xl gap-y-2 shadow-sm bg-secondary_bg_color w-full">
+      <div class="flex flex-col font-medium rounded-2xl gap-y-4 shadow-sm bg-secondary_bg_color w-full">
         <div class="flex p-4 pb-2 justify-between">
           <div class="flex items-center gap-x-2">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -138,16 +145,62 @@ const onClick = () => {
 
         <div class="px-4 pb-4">
           <button @click="onClick"
-                  v-if="props.isAirDrop === false"
-                  :class="['bg-yellow-500 w-full rounded-2xl shadow-sm active:opacity-75 transition-all p-2.5 text-white font-semibold uppercase']">
+                  v-if="!props.isAirDrop"
+                  :class="['button bg-yellow-500 w-full rounded-2xl shadow-sm active:opacity-75 transition-all p-2.5 text-white font-semibold uppercase']">
             {{ $t('activate_airdrop') }}
+            <Icon icon="line-md:loading-twotone-loop" v-if="loading" class="text-lg" />
           </button>
           <button v-else
-                  :class="['bg-yellow-500 w-full rounded-2xl shadow-sm active:opacity-75 transition-all p-2.5 text-white font-semibold uppercase']">
+                  :class="['button activate-button w-full rounded-2xl shadow-sm active:opacity-75 transition-all p-2.5 text-white font-semibold uppercase']">
             {{ $t('activate_airdrop') }}
           </button>
+          <div class="activate-date" v-if="props.isAirDrop">
+            <b>{{ $t('event_start_date') }}</b>
+            <span>{{ time }}</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.button {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    position: absolute;
+    left: 0.625rem;
+
+    &.right {
+      left: initial;
+      right: 0.625rem;
+    }
+  }
+}
+.activate-button {
+  background: var(--tg-theme-hint-color, gray);
+  color: var(--tg-theme-section-header-text-color, #b2b2b2);
+  opacity: 1;
+  cursor: default;
+}
+.activate-date {
+  gap: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 12px 0 0;
+  font-size: 12px;
+
+  b {
+
+  }
+
+  span {
+    color: var(--tg-theme-section-header-text-color, #b2b2b2);
+  }
+}
+</style>

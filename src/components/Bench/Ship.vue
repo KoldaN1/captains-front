@@ -445,6 +445,7 @@ const onPurchaseTon = async () => {
     color: var(--tg-theme-text-color, rgba(0, 0, 0, 1));
     opacity: 0.6;
     text-align: center;
+    flex-grow: 1;
   }
   &-button {
     background: rgba(248, 124, 86, 1);
