@@ -1,7 +1,7 @@
 <script setup>
 import EventsPageSwitch from "../../components/Event/EventsPageSwitch.vue";
 import EventsLists from "../../components/Event/EventsList/EventsLists.vue";
-import { useRouter } from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import { ref } from "vue";
 import Navigator from "../../components/Navigator/Navigator.vue";
 import { useGameStore } from "../../stores/gameStore.js";
@@ -14,10 +14,13 @@ const AIRDROP_PAGE = 'air-drop';
 const EVENTS_PAGE = 'events';
 
 const router = useRouter();
+const route = useRoute();
+
+const routerPageParameter = route.query.page;
 
 const eventsStore = useEventsStore();
 
-const activePage = ref(eventsStore.eventPage);
+const activePage = ref(routerPageParameter || eventsStore.eventPage);
 
 function switchPage(page) {
   router.push({ name: "EVENTS", query: { page } });

@@ -261,6 +261,7 @@
   "event_booster": "Booster",
   "get_ticket": "Buy tickets",
   "event_mine": "Mine",
+  "event_start_date": "Event start date:",
   "event_end_date": "Event end date:",
   "cruise": "Enter the Pirate Cruise",
   "cruise_attention": "To participate in the Pirate Cruise, you need to purchase a ticket or NFT",
