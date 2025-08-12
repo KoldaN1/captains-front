@@ -39,7 +39,7 @@ const time = formatToUserTime(date);
 </script>
 
 <template>
-  <div class="flex flex-col items-center">
+  <div class="flex flex-col items-center text-left">
     <div class="flex flex-col gap-y-4 w-full">
       <div class="flex flex-col font-medium rounded-2xl gap-y-4 shadow-sm bg-secondary_bg_color w-full">
         <div class="flex p-4 pb-2 justify-between">

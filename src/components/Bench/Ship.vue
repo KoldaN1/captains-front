@@ -9,6 +9,8 @@ import getShipInvoice from "../../services/api/getShipInvoice.js";
 import {timeout} from "../../utils/timeout.js";
 import getShipPayload from "../../services/api/getShipPayload.js";
 import {useTonConnectUI} from "@townsquarelabs/ui-vue";
+import FarmPadPopup from "./FarmPadPopup.vue";
+import FarmPadSwitcher from "./FarmPadSwitcher.vue";
 
 const router = useRouter()
 
@@ -144,8 +146,16 @@ const openLinked = (e) => {
   }
 }
 
+const farmPadOpened = ref(false);
+
 const openFarmPad = () => {
-  router.push({name: 'JOIN_TO_FARMPAD'});
+  farmPadOpened.value = true;
+  console.log('openFarmPad', farmPadOpened);
+  // router.push({name: 'JOIN_TO_FARMPAD'});
+}
+
+const closeFarmPad = () => {
+  farmPadOpened.value = false;
 }
 
 const invoicePromise = (invoiceLink) => new Promise((fulfill, reject) => {
@@ -213,6 +223,8 @@ const onPurchaseTon = async () => {
   isPurchasing.value = false;
 }
 
+const isMaxLevel = props.ship.user_level >= props.ship.max_level;
+
 </script>
 
 <template>
@@ -273,9 +285,8 @@ const onPurchaseTon = async () => {
           </button>
 
           <div v-else-if="ship.is_purchased" class="relative">
-            <template v-if="props.airdropAvailable">
-              <button :disabled="ship.user_level >= ship.max_level || timeLeftToUpgrade || buttonActivity"
-                      @click="openFarmPad"
+            <template v-if="isMaxLevel && airdropAvailable">
+              <button @click="openFarmPad"
                       :class="['bg-button_color relative rounded-2xl shadow-sm active:opacity-75 transition-all p-2.5 text-white w-full font-semibold uppercase', { 'bg-slate-500 cursor-not-allowed': timeLeftToUpgrade }]">
                 <span>
                   {{ $t('activate_airdrop') }}
@@ -283,10 +294,10 @@ const onPurchaseTon = async () => {
               </button>
             </template>
             <template v-else>
-              <button :disabled="ship.user_level >= ship.max_level || timeLeftToUpgrade || buttonActivity"
+              <button :disabled="isMaxLevel || timeLeftToUpgrade || buttonActivity"
                       @click="(e) => emit('upgrade', ship)"
                       :class="['bg-button_color relative rounded-2xl shadow-sm active:opacity-75 transition-all p-2.5 text-white w-full font-semibold uppercase', { 'bg-slate-500 cursor-not-allowed': timeLeftToUpgrade }]">
-                <span v-if="ship.user_level >= ship.max_level">{{ $t('max_level') }}</span>
+                <span v-if="isMaxLevel">{{ $t('max_level') }}</span>
                 <span v-else-if="timeLeftToUpgrade">
                                 <span>{{ $t('upgraded') }} {{ formatTimeLeft(timeLeftToUpgrade) }}</span>
                                 <button v-if="available_ads" :disabled="!available_ads || buttonActivity"
@@ -407,6 +418,9 @@ const onPurchaseTon = async () => {
       </div>
     </div>
   </div>
+  <FarmPadPopup @close="closeFarmPad" :opened="farmPadOpened">
+    <FarmPadSwitcher />
+  </FarmPadPopup>
 </template>
 
 <style lang="scss" scoped>
@@ -432,6 +446,7 @@ const onPurchaseTon = async () => {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    width: 50%;
   }
   &-title {
     font-size: 16px;
