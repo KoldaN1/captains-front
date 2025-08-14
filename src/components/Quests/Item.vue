@@ -131,7 +131,7 @@ onBeforeUnmount(() => {
         </span>
 
         <div class="flex flex-col gap-y-1">
-          <span class="font-medium line-clamp-1 text-base">{{ task.title }}</span>
+          <span class="font-medium text-base">{{ task.title }}</span>
           <span class="text-sm font-medium text-hint_color line-clamp-1"> +{{ formatNumber(task.reward) }} {{ $t("coins") }} </span>
         </div>
       </div>

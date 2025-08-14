@@ -301,12 +301,7 @@ const is_modal = ref(false);
 
       <Counter :coins="gameData?.coins || 0" :per_hour="gameData?.hourly_income || 0" />
 
-      <div class="z-0" v-if="airdropAvailable">
-        <div style="margin: 0 12px">
-          <FarmPadSwitcher />
-        </div>
-      </div>
-      <div class="z-0" v-else>
+      <div class="z-0">
         <swiper :slides-per-view="'1.1'" space-between="12px" :initial-slide="shipIndex">
           <swiper-slide v-for="(ship, index) in ships" :key="index" class="swiper-slide">
             <Card

@@ -30,17 +30,17 @@ const getTasksData = async () => {
   tasks.value = gameStore.tasks || { OurProjects: [], PartnerProjects: [], InfluencerProjects: [], RecurringTasks: [], Quests: [] };
 
   if (tasks.value.OurProjects?.length > 0) {
-    tasks.value.OurProjects.sort((a, b) => a.id - b.id);
+    tasks.value.OurProjects.sort((a, b) => new Date(a.published_at).getTime() - new Date(b.published_at).getTime());
   }
   if (tasks.value.PartnerProjects?.length > 0) {
-    tasks.value.PartnerProjects.sort((a, b) => b.id - a.id);
+    tasks.value.PartnerProjects.sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime());
   }
   if (tasks.value.InfluencerProjects?.length > 0) {
-    tasks.value.InfluencerProjects.sort((a, b) => b.id - a.id);
+    tasks.value.InfluencerProjects.sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime());
   }
 
   if (tasks.value.RecurringTasks?.length > 0) {
-    tasks.value.RecurringTasks.sort((a, b) => b.id - a.id);
+    tasks.value.RecurringTasks.sort((a, b) => new Date(b.published_at).getTime() - new Date(a.published_at).getTime());
   }
 
   if (!tasks.value.Quests?.length) {
